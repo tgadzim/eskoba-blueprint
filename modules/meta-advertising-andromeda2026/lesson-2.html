@@ -1,221 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How To Scale To RM1,000/Day - Eskoba Marketing</title>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS for utility styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        eskobaRed: '#E11D48',
-                        metaBlue: '#1877F2',
-                        darkBg: '#060A13',
-                        panelBg: '#0F1626',
-                        accentCyan: '#06B6D4',
-                        bmBlue: '#E0F2FE'
-                    },
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        space: ['"Space Grotesk"', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Custom Scrollbars */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #060A13;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1E293B;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #E11D48;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How To Scale To RM1,000/Day - Eskoba Marketing</title>
 
-        /* Slide Transition Animations */
-        .slide-card {
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .slide-hidden {
-            opacity: 0;
-            transform: scale(0.97) translateY(12px) rotateX(1deg);
-            pointer-events: none;
-            position: absolute;
-            z-index: 0;
-        }
-        .slide-active {
-            opacity: 1;
-            transform: scale(1) translateY(0) rotateX(0deg);
-            pointer-events: auto;
-            position: relative;
-            z-index: 10;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Glassmorphism elements */
-       .glass-card {
-              background: rgba(15, 22, 38, 0.95);
-              border: 1px solid rgba(255, 255, 255, 0.06);
-        }
+  <style>
+    :root {
+      --bg: #060A13;
+      --panel: #0F1626;
+      --panel2: #111827;
+      --line: #223047;
+      --muted: #94A3B8;
+      --text: #F8FAFC;
+      --red: #E11D48;
+      --cyan: #06B6D4;
+      --green: #22C55E;
+      --yellow: #FBBF24;
+    }
 
-        .slide-card {
-              transition: opacity 0.2s ease;
-        }
+    * { box-sizing: border-box; }
 
-        /* Glowing accents */
-        .glow-red {
-            box-shadow: 0 0 30px -5px rgba(225, 29, 72, 0.2);
-        }
-        .glow-blue {
-            box-shadow: 0 0 35px -5px rgba(24, 119, 242, 0.18);
-        }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-        /* Responsive aspect ratio preservation */
-        .aspect-16-9 {
-            aspect-ratio: 16 / 9;
-        }
-        
-        /* Flowchart connection arrows animation */
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-        .pulsing-line {
-            animation: pulseGlow 2s infinite ease-in-out;
-        }
-    </style>
+    .topbar {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--line);
+      background: #090D16;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Space Grotesk", sans-serif;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--text);
+      border-radius: 8px;
+      transform: rotate(45deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      background: var(--red);
+      border-radius: 3px;
+    }
+
+    .brand-text span { color: var(--red); }
+
+    .badge {
+      border: 1px solid var(--line);
+      background: #121A2B;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 310px 1fr;
+      min-height: calc(100vh - 72px);
+    }
+
+    .sidebar {
+      background: #090D16;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 72px);
+    }
+
+    .sidebar-head {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .slide-list {
+      padding: 12px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .slide-btn {
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      padding: 10px;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      margin-bottom: 6px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .slide-btn:hover { background: #111827; color: var(--text); }
+
+    .slide-btn.active {
+      background: rgba(225, 29, 72, .12);
+      border-color: rgba(225, 29, 72, .5);
+      color: var(--text);
+    }
+
+    .slide-num {
+      background: #1E293B;
+      color: var(--muted);
+      border-radius: 6px;
+      padding: 3px 6px;
+      font-family: monospace;
+      font-size: 11px;
+      flex: 0 0 auto;
+    }
+
+    .slide-btn.active .slide-num {
+      background: var(--red);
+      color: white;
+    }
+
+    .slide-title-mini {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .main {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .lesson-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .backlink {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .backlink:hover { color: var(--text); }
+
+    .frame {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      min-height: 620px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .slide-content {
+      padding: 44px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      background: rgba(225, 29, 72, .10);
+      border: 1px solid rgba(225, 29, 72, .35);
+      color: var(--red);
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    h1, h2, h3 {
+      font-family: "Space Grotesk", sans-serif;
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    .slide-heading {
+      font-size: clamp(30px, 4.4vw, 58px);
+      letter-spacing: -0.04em;
+      max-width: 900px;
+    }
+
+    .slide-heading .red { color: var(--red); }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 780px;
+      line-height: 1.55;
+    }
+
+    .bm-box {
+      border-left: 4px solid var(--cyan);
+      background: rgba(6, 182, 212, .07);
+      padding: 14px 16px;
+      border-radius: 0 12px 12px 0;
+      color: #D7E8F5;
+      font-size: 14px;
+      line-height: 1.55;
+      margin-top: auto;
+    }
+
+    .bm-box strong {
+      color: var(--cyan);
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 4px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: #111827;
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .muted { color: var(--muted); }
+
+    .item-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .item-list li {
+      border: 1px solid rgba(148, 163, 184, .15);
+      background: rgba(15, 23, 42, .65);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .item-list small {
+      display: block;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #0B1220;
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    td { color: #D7DEE8; }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .phase {
+      border: 1px solid var(--line);
+      background: #111827;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 12px;
+    }
+
+    .phase b {
+      color: var(--cyan);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      background: #090D16;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .navgroup {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbtn {
+      background: #121A2B;
+      border: 1px solid var(--line);
+      color: var(--text);
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .navbtn:hover { border-color: var(--red); }
+
+    .progress-wrap {
+      flex: 1;
+      max-width: 440px;
+      height: 6px;
+      background: #1E293B;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 4%;
+      background: var(--red);
+      transition: width .15s linear;
+    }
+
+    .counter {
+      color: var(--muted);
+      font-family: monospace;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { min-height: auto; max-height: 260px; }
+      .main { padding: 18px; }
+      .frame { min-height: 620px; }
+      .slide-content { padding: 26px; }
+      .grid-2, .grid-3, .timeline { grid-template-columns: 1fr; }
+      .badge { display: none; }
+    }
+  </style>
 </head>
-<body class="bg-darkBg text-slate-100 font-sans min-h-screen flex flex-col overflow-x-hidden selection:bg-eskobaRed selection:text-white">
 
-    <!-- TOP GLOBAL BRAND BAR -->
-    <header class="w-full bg-[#090D16] border-b border-slate-800/80 px-6 py-3 flex items-center justify-between z-50">
-        <!-- Recreated Eskoba Logo Vector -->
-        <div class="flex items-center gap-3">
-            <div class="relative w-10 h-10 flex items-center justify-center">
-                <svg class="w-full h-full" viewBox="0 0 150 150">
-                    <rect x="34" y="34" width="82" height="82" rx="24" transform="rotate(45 75 75)" fill="#060A13" stroke="#FFFFFF" stroke-width="4.5" />
-                    <rect x="34" y="34" width="82" height="82" rx="24" transform="rotate(135 75 75)" fill="none" stroke="#FFFFFF" stroke-width="4.5" />
-                    <rect x="34" y="34" width="82" height="82" rx="24" transform="rotate(135 75 75)" fill="#060A13" stroke="none" />
-                    <rect x="54" y="54" width="42" height="42" rx="5" transform="rotate(45 75 75)" fill="#E11D48" stroke="#060A13" stroke-width="2" />
-                    <circle cx="75" cy="75" r="11" fill="#FFFFFF" />
-                    <path d="M 67 75 A 8 8 0 0 0 83 75 A 8 8 0 0 1 67 75 Z" fill="#E11D48" />
-                </svg>
-            </div>
-            <div class="flex flex-col">
-                <div class="font-space font-bold text-sm md:text-base tracking-wider leading-none">
-                    ESKOBA<span class="text-eskobaRed">.</span><span class="text-slate-400 font-normal ml-0.5">MARKETING</span>
-                </div>
-                <div class="text-[7px] font-space tracking-[0.45em] text-slate-400 font-semibold leading-none mt-1">THE MEN OF DATA</div>
-            </div>
-        </div>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark"><div class="brand-dot"></div></div>
+      <div>
+        <div class="brand-text">ESKOBA<span>.</span>MARKETING</div>
+        <div style="font-size:8px;color:var(--muted);letter-spacing:.45em;margin-top:3px;">THE MEN OF DATA</div>
+      </div>
+    </div>
+    <div class="badge">Andromeda v3.0 Blueprint</div>
+  </header>
 
-        <!-- Dynamic PPTX Exporter & Meta Indicator -->
-        <div class="flex items-center gap-3">
-            <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-[#131926] border border-slate-800 rounded-full">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span class="text-[10px] font-mono text-slate-400 font-semibold">Andromeda v3.0 Blueprint</span>
-            </div>
-        </div>
-    </header>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <span>Slides SOP Guide</span>
+        <span id="slide-progress-badge">1 / 23</span>
+      </div>
+      <div class="slide-list" id="sidebar-list"></div>
+    </aside>
 
-    <!-- CORE INTERACTIVE WORKSPACE -->
-    <main class="flex-grow flex flex-col lg:flex-row relative">
-        
-        <!-- SIDEBAR: Interactive Presentation Outline (23 Slides) -->
-        <aside id="sidebar" class="w-full lg:w-80 bg-[#090D16]/95 border-r border-slate-800/80 flex flex-col justify-between shrink-0 transition-all duration-300 z-40">
-            <!-- Sidebar Header -->
-            <div class="p-3.5 border-b border-slate-800/80 flex items-center justify-between bg-slate-950/40">
-                <span class="text-[11px] font-bold text-slate-400 tracking-widest uppercase"><i class="fa-solid fa-list-ul mr-1.5 text-eskobaRed"></i>Slides SOP Guide</span>
-                <span id="slide-progress-badge" class="text-[10px] px-2 py-0.5 bg-eskobaRed/20 text-eskobaRed rounded font-mono font-bold">1 / 23</span>
-            </div>
-            
-            <!-- Slide Selection List with Thumbnails -->
-            <div class="flex-grow overflow-y-auto p-2 space-y-1 max-h-[220px] lg:max-h-none" id="sidebar-list">
-                <!-- JS Injector -->
-            </div>
+    <main class="main">
+      <div class="lesson-top">
+        <a class="backlink" href="index.html">← Back to Module</a>
+        <a class="backlink" href="../../home.html">Back to Home</a>
+      </div>
 
-            <!-- Presenter Profile Footer -->
-            <div class="p-3.5 border-t border-slate-800/80 bg-[#04070D] hidden lg:block">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-full bg-eskobaRed/10 border border-eskobaRed/30 flex items-center justify-center text-eskobaRed text-xs">
-                        <i class="fa-solid fa-language"></i>
-                    </div>
-                    <div>
-                        <div class="text-xs font-semibold text-slate-300">Dual-Language Enabled</div>
-                        <div class="text-[9px] text-slate-500 font-mono">EN Meta Terms + BM Explanations</div>
-                    </div>
-                </div>
-            </div>
-        </aside>
+      <section class="frame">
+        <div class="slide-content" id="slide-content"></div>
 
-        <!-- CANVAS: The Slide Viewer Area -->
-        <section class="flex-grow flex flex-col items-center justify-center p-3 lg:p-6 bg-darkBg relative overflow-hidden">
-            <!-- Background Radial Glows for Ambiance -->
-            <div class="absolute top-1/4 left-1/4 w-80 h-80 bg-eskobaRed/5 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-metaBlue/5 rounded-full blur-3xl pointer-events-none"></div>
-
-            <!-- Slide Presentation Frame -->
-            <div class="w-full max-w-[1040px] aspect-16-9 bg-panelBg border border-slate-850 rounded-xl shadow-2xl overflow-hidden relative slide-container glow-red flex flex-col justify-between">
-                
-                <!-- Individual Slide Pages -->
-                <div class="flex-grow w-full relative overflow-hidden" id="slides-wrapper">
-                    <!-- Slides are injected here dynamically to assure clean code and DOM control -->
-                </div>
-
-                <!-- CONTROLLER: Presenter Navigation Footer -->
-                <footer class="w-full bg-[#090D16] border-t border-slate-800/80 px-5 py-3.5 flex items-center justify-between relative z-20">
-                    <div class="flex items-center gap-3">
-                        <button id="prev-btn" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-eskobaRed hover:bg-slate-800/50 transition-all">
-                            <i class="fa-solid fa-chevron-left text-sm"></i>
-                        </button>
-                        <span id="slide-num-indicator" class="text-xs font-mono font-bold text-slate-400">01 // 23</span>
-                        <button id="next-btn" class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-300 hover:text-white hover:border-eskobaRed hover:bg-slate-800/50 transition-all">
-                            <i class="fa-solid fa-chevron-right text-sm"></i>
-                        </button>
-                    </div>
-
-                    <!-- Slide Progress Tracker -->
-                    <div class="hidden sm:flex flex-grow max-w-xs md:max-w-md mx-4 bg-slate-900 h-1 rounded-full overflow-hidden border border-slate-800">
-                        <div id="slide-progress-bar" class="bg-eskobaRed h-full transition-all duration-300" style="width: 4.34%;"></div>
-                    </div>
-
-                    <div class="flex items-center gap-2">
-                        <!-- Play / Pause Auto Presentation Toggle -->
-                        <button id="autoplay-btn" class="px-3 py-1.5 rounded-lg border border-slate-800 text-xs text-slate-400 hover:text-white hover:border-slate-700 transition-all flex items-center gap-1.5">
-                            <i class="fa-solid fa-play text-[10px]"></i> <span>Auto Play</span>
-                        </button>
-                        <!-- Fullscreen Toggle -->
-                        <button id="fullscreen-btn" class="w-9 h-9 rounded-lg border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700 flex items-center justify-center transition-all">
-                            <i class="fa-solid fa-expand text-sm"></i>
-                        </button>
-                    </div>
-                </footer>
-
-            </div>
-        </section>
-
+        <footer class="footer">
+          <div class="navgroup">
+            <button class="navbtn" id="prev-btn">‹</button>
+            <span class="counter" id="slide-num-indicator">01 // 23</span>
+            <button class="navbtn" id="next-btn">›</button>
+          </div>
+          <div class="progress-wrap"><div class="progress-bar" id="slide-progress-bar"></div></div>
+          <button class="navbtn" id="fullscreen-btn">⛶</button>
+        </footer>
+      </section>
     </main>
+  </div>
 
-    <!-- Slide Database Definition -->
-    <script>
-        const slideMetadata = [
+  <script>
+    const slideMetadata = [
             {
                 idx: 1,
                 title: "How To Scale To RM1,000/Day With Meta Andromeda",
@@ -605,1053 +854,283 @@
             }
         ];
 
-        // RENDER METHOD FOR EACH SLIDE TYPE IN HTML
-        function renderSlideHtml(slide) {
-            const data = slide.content;
-            
-            // Slide Title component template
-            const headerHtml = `
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-eskobaRed/10 border border-eskobaRed/30 rounded text-[10px] font-bold text-eskobaRed uppercase tracking-widest font-space">
-                            <i class="fa-solid fa-microchip"></i> Eskoba Performance Matrix
-                        </span>
-                        <h2 class="font-space text-xl md:text-2xl font-bold text-white mt-1.5 tracking-tight uppercase">${slide.title}</h2>
-                    </div>
-                    <span class="text-[10px] font-mono text-slate-500 bg-[#090D16] px-2 py-1 rounded border border-slate-800">SLIDE // ${String(slide.idx).padStart(2, '0')}</span>
-                </div>
-            `;
-
-            // BM Box Component
-            const bmBoxHtml = (text) => `
-                <div class="mt-auto p-3 bg-[#E0F2FE]/5 border-l-4 border-accentCyan rounded-r-lg flex items-start gap-2.5">
-                    <div class="w-5 h-5 rounded-full bg-accentCyan/15 flex items-center justify-center text-accentCyan shrink-0 text-[10px] font-bold font-space mt-0.5">🇲🇾</div>
-                    <div>
-                        <span class="text-[9px] text-accentCyan uppercase tracking-wider font-extrabold block">Maksud mudah &amp; Tindakan Team:</span>
-                        <p class="text-xs text-slate-300 italic font-medium leading-relaxed">${text}</p>
-                    </div>
-                </div>
-            `;
-
-            if (slide.type === "cover") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-8 md:p-12 relative overflow-hidden">
-                        <!-- Technical label -->
-                        <div class="flex justify-between items-start z-10">
-                            <span class="text-xs font-bold text-eskobaRed uppercase tracking-widest font-space"><i class="fa-solid fa-shield-halved mr-1.5"></i>Internal SOP release</span>
-                            <span class="text-xs font-mono text-slate-500">VERSION 3.0 BLUEPRINT</span>
-                        </div>
-                        
-                        <!-- Hero Title -->
-                        <div class="my-auto max-w-4xl space-y-4 z-10">
-                            <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-eskobaRed/15 border border-eskobaRed/40 rounded-full text-eskobaRed text-xs font-bold uppercase tracking-wider font-space">
-                                <i class="fa-solid fa-brain"></i> Meta Andromeda Retrieve Engine
-                            </div>
-                            <h1 class="font-space text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight">
-                                How To Scale To <span class="text-eskobaRed">RM1,000/Day</span><br>With Meta Andromeda
-                            </h1>
-                            <p class="text-slate-400 text-sm md:text-base max-w-2xl font-light leading-relaxed">
-                                ${data.subtitle}
-                            </p>
-                        </div>
-
-                        <!-- BM Box and Corporate Footer -->
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 pt-4 border-t border-slate-800/80 items-center z-10">
-                            <div class="md:col-span-8">
-                                ${bmBoxHtml(data.bm_subtitle)}
-                            </div>
-                            <div class="md:col-span-4 text-right hidden md:block">
-                                <div class="text-[10px] text-slate-500 font-mono">Prepared by <strong class="text-slate-300">Eskoba Marketing</strong></div>
-                                <div class="text-[10px] text-slate-500 font-mono">Audience: <strong class="text-slate-300">Performance Team</strong></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (slide.type === "concept") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-auto">
-                            <!-- Left Column: Old Meta -->
-                            <div class="glass-card p-4 rounded-xl border-l-4 border-slate-600">
-                                <div class="flex items-center justify-between mb-2">
-                                    <h3 class="font-space font-bold text-sm text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-arrow-left-long mr-1.5"></i>${data.left_title}</h3>
-                                    <span class="text-[9px] px-1.5 py-0.5 bg-slate-800 text-slate-400 rounded">${data.left_bm}</span>
-                                </div>
-                                <ul class="space-y-2 text-xs text-slate-400">
-                                    ${data.left_items.map(item => `
-                                        <li class="flex items-start gap-1.5">
-                                            <i class="fa-solid fa-circle-xmark text-rose-500/80 mt-0.5 text-[10px] shrink-0"></i>
-                                            <div>
-                                                <span class="font-bold text-slate-300 text-[11px] block">${item.en}</span>
-                                                <span class="text-[10px] text-slate-500 italic">${item.bm}</span>
-                                            </div>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-
-                            <!-- Right Column: New Meta -->
-                            <div class="glass-card p-4 rounded-xl border-l-4 border-eskobaRed glow-red">
-                                <div class="flex items-center justify-between mb-2">
-                                    <h3 class="font-space font-bold text-sm text-white uppercase tracking-wider"><i class="fa-solid fa-brain mr-1.5 text-eskobaRed"></i>${data.right_title}</h3>
-                                    <span class="text-[9px] px-1.5 py-0.5 bg-eskobaRed/10 text-eskobaRed rounded font-bold">${data.right_bm}</span>
-                                </div>
-                                <ul class="space-y-2 text-xs text-slate-200">
-                                    ${data.right_items.map(item => `
-                                        <li class="flex items-start gap-1.5">
-                                            <i class="fa-solid fa-circle-check text-emerald-500 mt-0.5 text-[10px] shrink-0"></i>
-                                            <div>
-                                                <span class="font-bold text-white text-[11px] block">${item.en}</span>
-                                                <span class="text-[10px] text-slate-400 italic">${item.bm}</span>
-                                            </div>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Dual Language Key message box -->
-                        <div class="mt-4">
-                            <span class="text-[10px] font-bold text-eskobaRed uppercase font-space tracking-widest block mb-1">Key Scaling Principle:</span>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
-                                <p class="text-xs text-white font-bold">${data.key_message}</p>
-                                ${bmBoxHtml(data.bm_key)}
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (slide.type === "pyramid") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 my-auto items-center">
-                            <!-- Visual stack representing pyramid -->
-                            <div class="md:col-span-8 flex flex-col space-y-1.5">
-                                ${data.layers.map((layer, index) => {
-                                    // Make width smaller as level goes up to represent pyramid
-                                    const widthPct = 100 - (index * 12);
-                                    const colors = ["bg-slate-900 border-slate-800", "bg-slate-850 border-slate-750", "bg-slate-800 border-slate-700", "bg-slate-750 border-slate-650", "bg-eskobaRed text-white border-eskobaRed glow-red"];
-                                    const colorClass = colors[5 - layer.lvl] || "bg-slate-900";
-                                    return `
-                                        <div class="flex items-center gap-3 p-2 rounded-lg border text-xs font-semibold transform transition-transform hover:translate-x-2 cursor-pointer ${colorClass}" style="width: ${widthPct}%; margin-left: auto; margin-right: auto;">
-                                            <div class="w-5 h-5 bg-black/20 rounded-full flex items-center justify-center text-[10px]">${layer.lvl}</div>
-                                            <div class="flex-grow flex justify-between items-center">
-                                                <span class="font-space font-bold">${layer.label}</span>
-                                                <span class="text-[10px] opacity-80 font-normal italic hidden sm:inline-block">${layer.bm}</span>
-                                            </div>
-                                        </div>
-                                    `;
-                                }).reverse().join('')}
-                            </div>
-                            <div class="md:col-span-4 text-xs space-y-3">
-                                <h4 class="font-space font-bold text-white uppercase tracking-wider"><i class="fa-solid fa-triangle-exclamation text-yellow-500 mr-1.5"></i>Scaling Gate Rule:</h4>
-                                <p class="text-slate-400">Do not skip layers. Each layer must be mathematically validated before promoting budget.</p>
-                                <p class="text-[11px] text-slate-500">SOP Action: Team buyers must check previous level stats before escalating accounts.</p>
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "timeline") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="my-auto relative">
-                            <!-- Timeline line backer -->
-                            <div class="absolute top-1/2 left-[5%] right-[5%] h-0.5 bg-slate-800 -translate-y-1/2 z-0"></div>
-                            
-                            <div class="grid grid-cols-5 gap-2 relative z-10">
-                                ${data.steps.map((s, i) => `
-                                    <div class="glass-card p-3 rounded-lg text-center border-t-2 border-t-slate-700 hover:border-t-eskobaRed transition-all">
-                                        <span class="text-[9px] font-mono font-bold text-slate-500 uppercase block">${s.phase}</span>
-                                        <span class="text-[10px] text-accentCyan font-bold block mt-0.5">${s.period}</span>
-                                        <div class="text-xs font-black text-white bg-slate-900 py-1.5 rounded my-1.5 border border-slate-800">${s.budget}</div>
-                                        <div class="text-[10px] font-bold text-slate-300 leading-tight">${s.objective}</div>
-                                        <p class="text-[9px] text-slate-500 italic mt-1 leading-snug">${s.bm}</p>
-                                        <div class="text-[8px] bg-eskobaRed/10 text-eskobaRed py-0.5 rounded font-mono font-bold mt-2">${s.vol}</div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "campaign_structure") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-5 my-auto">
-                            <!-- Campaign structure tree representation -->
-                            <div class="md:col-span-8 flex flex-col space-y-3 justify-center">
-                                <!-- Campaign -->
-                                <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2 py-0.5 bg-eskobaRed/20 text-eskobaRed text-[9px] rounded font-mono font-bold uppercase">CAMPAIGN</span>
-                                        <h4 class="font-space font-bold text-xs md:text-sm text-white">${data.campaign}</h4>
-                                    </div>
-                                    <i class="fa-solid fa-folder-open text-slate-600"></i>
-                                </div>
-                                <!-- Arrow -->
-                                <div class="text-center text-slate-700 text-xs py-0.5"><i class="fa-solid fa-arrow-down pulsing-line"></i></div>
-                                <!-- Ad Set -->
-                                <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-between">
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2 py-0.5 bg-accentCyan/20 text-accentCyan text-[9px] rounded font-mono font-bold uppercase">AD SET</span>
-                                        <h4 class="font-space font-bold text-xs md:text-sm text-white">${data.ad_set}</h4>
-                                    </div>
-                                    <i class="fa-solid fa-users text-slate-600"></i>
-                                </div>
-                                <!-- Arrow -->
-                                <div class="text-center text-slate-700 text-xs py-0.5"><i class="fa-solid fa-arrow-down pulsing-line"></i></div>
-                                <!-- Ads volume -->
-                                <div class="p-3 bg-eskobaRed/10 border border-eskobaRed/30 rounded-lg flex items-center justify-between glow-red">
-                                    <div class="flex items-center gap-2">
-                                        <span class="px-2 py-0.5 bg-eskobaRed text-white text-[9px] rounded font-mono font-bold uppercase">CREATIVES</span>
-                                        <h4 class="font-space font-bold text-xs md:text-sm text-white">${data.ads_vol} (${data.categories.join(', ')})</h4>
-                                    </div>
-                                    <i class="fa-solid fa-wand-magic-sparkles text-eskobaRed"></i>
-                                </div>
-                            </div>
-
-                            <!-- Right rule explanation box -->
-                            <div class="md:col-span-4 space-y-3 flex flex-col justify-center">
-                                <div class="p-3 bg-rose-950/20 border border-rose-900/60 rounded-lg">
-                                    <span class="text-[9px] text-eskobaRed font-bold uppercase tracking-widest font-space block mb-1"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Jangan Buat:</span>
-                                    <p class="text-[11px] text-slate-300 leading-relaxed">${data.warning_bm}</p>
-                                </div>
-                                <div class="p-3 bg-slate-950/40 border border-slate-850 rounded-lg text-slate-400 text-[11px]">
-                                    <span class="text-white font-bold block mb-1">Maksud mudah:</span>
-                                    Duit RM100 kalau pecah banyak, satu adset dapat sikit sangat data. Meta lambat pandai.
-                                </div>
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "matrix") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-5 md:p-8">
-                        ${headerHtml}
-                        
-                        <div class="overflow-x-auto rounded-lg border border-slate-800 my-auto">
-                            <table class="w-full text-left border-collapse text-[10px] md:text-xs">
-                                <thead>
-                                    <tr class="bg-slate-900 border-b border-slate-800 text-slate-300 font-space font-bold">
-                                        <th class="p-2 text-eskobaRed">Angle Category</th>
-                                        <th class="p-2">BM Meaning</th>
-                                        <th class="p-2 text-accentCyan">Purpose</th>
-                                        <th class="p-2">Creative 1</th>
-                                        <th class="p-2">Creative 2</th>
-                                        <th class="p-2">Creative 3</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-850 bg-panelBg text-slate-300">
-                                    ${data.rows.map(row => `
-                                        <tr class="hover:bg-slate-900/30">
-                                            <td class="p-2 font-black text-white">${row.cat}</td>
-                                            <td class="p-2 italic text-slate-400">${row.bm_mean}</td>
-                                            <td class="p-2 font-semibold text-accentCyan">${row.purpose}</td>
-                                            <td class="p-2 text-slate-300">${row.var1}</td>
-                                            <td class="p-2 text-slate-300">${row.var2}</td>
-                                            <td class="p-2 text-slate-300">${row.var3}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "checklist") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-auto">
-                            <!-- Mandatory Dos -->
-                            <div class="glass-card p-4 rounded-xl border-l-4 border-emerald-500">
-                                <h3 class="font-space font-bold text-xs md:text-sm text-emerald-400 uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-check"></i> Team action (Wajib Buat)
-                                </h3>
-                                <ul class="space-y-2 text-xs">
-                                    ${data.dos.map(doItem => `
-                                        <li class="flex items-start gap-2">
-                                            <span class="text-emerald-500 font-bold">✓</span>
-                                            <div>
-                                                <span class="text-white font-semibold block">${doItem.en}</span>
-                                                <span class="text-[10px] text-slate-400 italic">${doItem.bm}</span>
-                                            </div>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-
-                            <!-- Strictly Forbidden Donts -->
-                            <div class="glass-card p-4 rounded-xl border-l-4 border-eskobaRed glow-red">
-                                <h3 class="font-space font-bold text-xs md:text-sm text-eskobaRed uppercase tracking-widest mb-3 flex items-center gap-1.5">
-                                    <i class="fa-solid fa-circle-xmark"></i> Jangan gatal tangan (Dilarang)
-                                </h3>
-                                <ul class="space-y-2 text-xs">
-                                    ${data.donts.map(dontItem => `
-                                        <li class="flex items-start gap-2">
-                                            <span class="text-eskobaRed font-bold">✗</span>
-                                            <div>
-                                                <span class="text-white font-semibold block">${dontItem.en}</span>
-                                                <span class="text-[10px] text-slate-400 italic">${dontItem.bm}</span>
-                                            </div>
-                                        </li>
-                                    `).join('')}
-                                </ul>
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "kpi_review") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-5 md:p-8">
-                        ${headerHtml}
-                        
-                        <div class="overflow-x-auto rounded-lg border border-slate-800 my-auto">
-                            <table class="w-full text-left border-collapse text-[10px] md:text-xs">
-                                <thead>
-                                    <tr class="bg-slate-900 border-b border-slate-800 text-slate-300 font-space font-bold">
-                                        <th class="p-2.5 text-white">Ad Metric</th>
-                                        <th class="p-2.5">BM Definition</th>
-                                        <th class="p-2.5 text-emerald-400">Healthy Signal (Pass)</th>
-                                        <th class="p-2.5 text-rose-400">Weak Signal (Fail)</th>
-                                        <th class="p-2.5 text-accentCyan">Optimization Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-850 bg-panelBg">
-                                    ${data.metrics.map(m => `
-                                        <tr class="hover:bg-slate-900/30">
-                                            <td class="p-2.5 font-bold text-white">${m.name}</td>
-                                            <td class="p-2.5 text-slate-400 italic">${m.bm}</td>
-                                            <td class="p-2.5 text-emerald-400 font-bold">${m.healthy}</td>
-                                            <td class="p-2.5 text-rose-400 font-bold">${m.weak}</td>
-                                            <td class="p-2.5 text-accentCyan font-semibold">${m.action}</td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "conditional_logic" || slide.type === "conditional_logic_2" || slide.type === "conditional_logic_3" || slide.type === "conditional_logic_4" || slide.type === "conditional_logic_5") {
-                const isComplexType = slide.type === "conditional_logic_2" || slide.type === "conditional_logic_3" || slide.type === "conditional_logic_4" || slide.type === "conditional_logic_5";
-                return `
-                    <div class="h-full flex flex-col justify-between p-4 md:p-8">
-                        ${headerHtml}
-                        
-                        <div class="overflow-y-auto max-h-[280px] rounded-lg border border-slate-850 my-auto bg-slate-950/20">
-                            <div class="grid grid-cols-1 divide-y divide-slate-800">
-                                ${data.rules.map((r, i) => {
-                                    const conditionText = isComplexType ? (r.problem || r.prob) : r.if;
-                                    const conditionBm = isComplexType ? (r.bm_problem || r.bm_prob) : r.bm_if;
-                                    const causeText = r.diagnosis || r.cause;
-                                    const causeBm = r.bm_diagnosis || r.bm_cause;
-                                    const actionText = r.action || r.then;
-                                    const actionBm = r.bm_action || r.bm_then;
-                                    
-                                    return `
-                                        <div class="p-3 grid grid-cols-1 md:grid-cols-12 gap-3 text-xs items-center hover:bg-slate-900/10">
-                                            <div class="md:col-span-4 border-r border-slate-800/40 pr-2">
-                                                <span class="inline-block px-1.5 py-0.5 bg-rose-500/15 text-rose-400 text-[9px] font-bold rounded uppercase mb-1">SYMPTOM</span>
-                                                <span class="font-bold text-white block leading-tight">${conditionText}</span>
-                                                <span class="text-[10px] text-slate-400 italic block mt-0.5">${conditionBm}</span>
-                                            </div>
-                                            ${causeText ? `
-                                            <div class="md:col-span-3 border-r border-slate-800/40 pr-2">
-                                                <span class="inline-block px-1.5 py-0.5 bg-yellow-500/10 text-yellow-400 text-[9px] font-bold rounded uppercase mb-1">PROBABLE CAUSE</span>
-                                                <span class="text-slate-300 block leading-tight text-[11px]">${causeText}</span>
-                                                <span class="text-[10px] text-slate-500 italic block mt-0.5">${causeBm}</span>
-                                            </div>
-                                            ` : ''}
-                                            <div class="${causeText ? 'md:col-span-5' : 'md:col-span-8'} pl-1">
-                                                <span class="inline-block px-1.5 py-0.5 bg-emerald-500/15 text-emerald-400 text-[9px] font-bold rounded uppercase mb-1">SOP SOLUTION</span>
-                                                <span class="text-slate-200 block leading-normal text-[11px] font-medium">${actionText}</span>
-                                                <span class="text-[10px] text-slate-400 italic block mt-0.5">${actionBm}</span>
-                                            </div>
-                                        </div>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "budget_ladder") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
-                            <!-- Stair ladder design -->
-                            <div class="flex flex-col space-y-2 justify-center">
-                                <span class="text-[10px] font-bold text-eskobaRed uppercase tracking-widest font-space block mb-1">Gradual Escalation Ladder:</span>
-                                ${data.steps.map((step, idx) => {
-                                    const padLeft = idx * 24;
-                                    return `
-                                        <div class="p-3 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-between" style="margin-left: ${padLeft}px;">
-                                            <div class="flex items-center gap-2">
-                                                <span class="w-5 h-5 rounded-full bg-eskobaRed/20 text-eskobaRed flex items-center justify-center text-xs font-bold font-space">${idx+1}</span>
-                                                <div class="text-xs">
-                                                    <span class="text-white font-bold block">${step.from} → <span class="text-emerald-400">${step.to}</span></span>
-                                                    <span class="text-[9px] text-slate-400 italic">${step.cond}</span>
-                                                </div>
-                                            </div>
-                                            <i class="fa-solid fa-arrow-trend-up text-emerald-400"></i>
-                                        </div>
-                                    `;
-                                }).join('')}
-                            </div>
-
-                            <!-- Action checklist -->
-                            <div class="glass-card p-4 rounded-xl flex flex-col justify-between">
-                                <div>
-                                    <h4 class="font-space font-bold text-xs md:text-sm text-white uppercase tracking-widest mb-3 flex items-center gap-1.5 text-accentCyan">
-                                        <i class="fa-solid fa-circle-check"></i> Verification Before Scaling:
-                                    </h4>
-                                    <ul class="space-y-2 text-xs">
-                                        ${data.checklist.map(item => `
-                                            <li class="flex items-start gap-2">
-                                                <span class="text-accentCyan font-bold">✓</span>
-                                                <span class="text-slate-300">${item}</span>
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                                <span class="text-[10px] text-slate-500 italic block border-t border-slate-800/60 pt-2 mt-3">All parameters must have positive indicators before laddering.</span>
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "hub_spoke") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="my-auto">
-                            <!-- Visual core hub & spoke grid -->
-                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                                <div class="col-span-2 sm:col-span-4 p-2.5 bg-eskobaRed text-white rounded-lg text-center font-space font-bold text-xs uppercase shadow-lg shadow-eskobaRed/10">
-                                    <i class="fa-solid fa-crown mr-1.5"></i> ${data.source}
-                                </div>
-                                ${data.spokes.map(spoke => `
-                                    <div class="glass-card p-2 rounded-lg text-center border-b-2 border-b-slate-700 hover:border-b-eskobaRed transition-all">
-                                        <h5 class="text-[11px] font-bold text-white truncate">${spoke.name}</h5>
-                                        <span class="text-[9px] text-slate-400 italic block mt-0.5 truncate">${spoke.desc}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                            <div class="text-center mt-3 text-xs font-bold text-slate-300 font-space bg-slate-950/40 py-1.5 rounded border border-slate-850">
-                                <i class="fa-solid fa-arrow-right-to-bracket text-eskobaRed mr-1.5"></i>${data.goal}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "campaign_split" || slide.type === "campaign_split_5") {
-                const isPhase5 = slide.type === "campaign_split_5";
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 my-auto items-center">
-                            <!-- Left: Split visual pie visualization -->
-                            <div class="md:col-span-4 flex flex-col items-center">
-                                <div class="relative w-36 h-36 rounded-full flex items-center justify-center bg-darkBg" style="box-shadow: inset 0 0 15px rgba(0,0,0,0.6);">
-                                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
-                                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#E11D48" stroke-width="10" stroke-dasharray="251.2" stroke-dashoffset="75.36" />
-                                        <circle cx="50" cy="50" r="40" fill="transparent" stroke="#1877F2" stroke-width="10" stroke-dasharray="251.2" stroke-dashoffset="251.2" style="stroke-dashoffset: 0;" />
-                                    </svg>
-                                    <div class="absolute inset-4 rounded-full bg-[#0F1626] flex flex-col items-center justify-center text-center">
-                                        <span class="text-[8px] text-slate-500 font-bold uppercase tracking-wider">BUDGET SPLIT</span>
-                                        <span class="text-lg font-space font-bold text-white">${isPhase5 ? '70/30%' : '70/30%'}</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Right: Details cards -->
-                            <div class="md:col-span-8 space-y-3">
-                                ${data.split.map((s, idx) => {
-                                    const isScale = idx === 0;
-                                    const dotColor = isScale ? 'bg-eskobaRed' : 'bg-metaBlue';
-                                    const details = isPhase5 ? s.obj : `${s.desc} (${s.bm_desc})`;
-                                    return `
-                                        <div class="p-3 rounded-lg bg-slate-900 border border-slate-800 flex items-start gap-3">
-                                            <div class="w-3 h-3 rounded-full ${dotColor} mt-1 flex-shrink-0"></div>
-                                            <div class="text-xs">
-                                                <h4 class="font-space font-bold text-white">${s.name || s.campaign} (${s.budget} - ${s.pct})</h4>
-                                                <p class="text-slate-400 mt-0.5 text-[11px] leading-relaxed">${details}</p>
-                                            </div>
-                                        </div>
-                                    `;
-                                }).join('')}
-                                
-                                ${isPhase5 ? `
-                                <div class="p-2.5 bg-slate-950/60 rounded border border-slate-800 text-[10px] text-slate-300">
-                                    <span class="font-bold text-eskobaRed uppercase tracking-wider block font-space mb-1"><i class="fa-solid fa-boxes-stacked mr-1"></i>SOP Creative Inventory Checklist:</span>
-                                    <div class="grid grid-cols-3 gap-2 text-center font-mono">
-                                        <div class="bg-slate-900 p-1 rounded">Min: ${data.inventory.min}</div>
-                                        <div class="bg-slate-900 p-1 rounded">Healthy: ${data.inventory.healthy}</div>
-                                        <div class="bg-slate-900 p-1 rounded text-emerald-400">Strong: ${data.inventory.strong}</div>
-                                    </div>
-                                </div>
-                                ` : `
-                                <div class="p-2 bg-slate-950/60 border border-slate-850 rounded text-[11px] text-slate-400 font-medium">
-                                    <span class="text-white font-bold block mb-0.5">SOP Campaign Allocation Rule:</span>
-                                    ${data.rule.english} / <span class="italic text-accentCyan">${data.rule.bm}</span>
-                                </div>
-                                `}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "global_matrix") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-4 md:p-6">
-                        ${headerHtml}
-                        
-                        <div class="overflow-y-auto max-h-[290px] rounded-lg border border-slate-850 my-auto bg-slate-950/30">
-                            <table class="w-full text-left border-collapse text-[10px] md:text-[11px]">
-                                <thead>
-                                    <tr class="bg-slate-900 border-b border-slate-800 text-slate-300 font-space font-bold sticky top-0">
-                                        <th class="p-2 text-white">Symptom</th>
-                                        <th class="p-2">BM Symptom</th>
-                                        <th class="p-2 text-yellow-400">Diagnosis</th>
-                                        <th class="p-2 text-emerald-400">Action 1 (SOP)</th>
-                                        <th class="p-2 text-accentCyan">Action 2 (SOP)</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-850">
-                                    ${data.matrix.map(m => `
-                                        <tr class="hover:bg-slate-900/20 bg-panelBg/50">
-                                            <td class="p-2 font-bold text-white">${m.sym}</td>
-                                            <td class="p-2 text-slate-400 italic">${m.bm_sym}</td>
-                                            <td class="p-2 text-slate-300"><span class="text-[10px] block font-semibold text-yellow-500">${m.diag}</span><span class="text-[9px] text-slate-500 italic block mt-0.5">${m.bm_diag}</span></td>
-                                            <td class="p-2 text-emerald-400 font-medium"><span class="block">${m.act1}</span><span class="text-[9px] text-slate-500 italic block mt-0.5">${m.bm_first_action || m.act1}</span></td>
-                                            <td class="p-2 text-accentCyan font-medium"><span class="block">${m.act2}</span><span class="text-[9px] text-slate-500 italic block mt-0.5">${m.bm_second_action || m.act2}</span></td>
-                                        </tr>
-                                    `).join('')}
-                                </tbody>
-                            </table>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "rules_cards") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-4 md:p-6">
-                        ${headerHtml}
-                        
-                        <div class="overflow-y-auto max-h-[300px] my-auto pr-1">
-                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
-                                ${data.rules.map((rule, index) => `
-                                    <div class="glass-card p-2.5 rounded-lg border-t-2 border-t-eskobaRed hover:border-t-accentCyan transition-all flex flex-col justify-between">
-                                        <div>
-                                            <span class="inline-flex items-center px-1.5 py-0.5 bg-rose-500/10 text-rose-400 text-[8px] font-mono font-bold rounded uppercase">IF</span>
-                                            <h5 class="text-[11px] font-bold text-white mt-1 leading-tight">${rule.cond}</h5>
-                                            <span class="text-[9px] text-slate-500 italic block mt-0.5 leading-snug">${rule.bm_if || ''}</span>
-                                        </div>
-                                        <div class="mt-3 border-t border-slate-800/60 pt-2">
-                                            <span class="inline-flex items-center px-1.5 py-0.5 bg-emerald-500/10 text-emerald-400 text-[8px] font-mono font-bold rounded uppercase">THEN</span>
-                                            <p class="text-[10px] text-slate-300 font-medium leading-relaxed mt-1">${rule.act}</p>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "phase_gate") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-5 md:p-8">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-auto">
-                            ${data.gates.map((g, idx) => `
-                                <div class="glass-card p-3 rounded-lg border-t-2 border-t-slate-700 hover:border-t-eskobaRed transition-all flex flex-col h-full">
-                                    <div class="flex items-center gap-1.5 border-b border-slate-800/80 pb-2 mb-2">
-                                        <div class="w-5 h-5 rounded-full bg-eskobaRed/15 text-eskobaRed flex items-center justify-center text-[10px] font-bold"><i class="fa-solid fa-lock"></i></div>
-                                        <h4 class="font-space font-bold text-[11px] text-white uppercase tracking-wider">${g.move || g.bm_move}</h4>
-                                    </div>
-                                    <ul class="space-y-1.5 text-[10px] text-slate-300 flex-grow">
-                                        ${g.must.map(mustItem => `
-                                            <li class="flex items-start gap-1.5 leading-tight">
-                                                <span class="text-emerald-400 font-bold shrink-0">✓</span>
-                                                <span>${mustItem}</span>
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            `).join('')}
-                        </div>
-
-                        <div class="mt-2 p-2 bg-slate-950/60 rounded border border-slate-850 text-[11px] text-slate-400">
-                            <span class="font-bold text-white font-space uppercase text-[9px] block mb-0.5"><i class="fa-solid fa-shield"></i> Hard Rule:</span>
-                            ${data.rule}
-                        </div>
-                    </div>
-                `;
-            }
-
-            if (slide.type === "weekly_system") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-4 md:p-6">
-                        ${headerHtml}
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 my-auto">
-                            <!-- Left: Rhythm Calendar -->
-                            <div class="md:col-span-8 overflow-x-auto rounded-lg border border-slate-800 bg-slate-950/20">
-                                <table class="w-full text-left border-collapse text-[10px] md:text-xs">
-                                    <thead>
-                                        <tr class="bg-slate-900 border-b border-slate-800 text-slate-300 font-space font-bold">
-                                            <th class="p-2">Day Schedule</th>
-                                            <th class="p-2 text-eskobaRed">Media Buyer</th>
-                                            <th class="p-2 text-accentCyan">Creative Team</th>
-                                            <th class="p-2">Leader Direction</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="divide-y divide-slate-850">
-                                        ${data.days.map(d => `
-                                            <tr class="hover:bg-slate-900/20">
-                                                <td class="p-2 font-bold text-white">${d.name}</td>
-                                                <td class="p-2 text-slate-300 font-medium">${d.mb}</td>
-                                                <td class="p-2 text-slate-400">${d.ct}</td>
-                                                <td class="p-2 text-accentCyan font-semibold">${d.lead}</td>
-                                            </tr>
-                                        `).join('')}
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <!-- Right: Target output -->
-                            <div class="md:col-span-4 glass-card p-3 rounded-xl flex flex-col justify-between">
-                                <div>
-                                    <h4 class="font-space font-bold text-[11px] text-white uppercase tracking-widest mb-2 flex items-center gap-1 text-accentCyan">
-                                        <i class="fa-solid fa-chart-line"></i> Weekly Outputs:
-                                    </h4>
-                                    <ul class="space-y-1 text-[10px] text-slate-300">
-                                        ${data.targets.map(t => `
-                                            <li class="flex items-start gap-1.5 leading-snug">
-                                                <span class="text-accentCyan font-black">•</span>
-                                                <span>${t}</span>
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "flowchart_final") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-5 md:p-8">
-                        ${headerHtml}
-                        
-                        <div class="my-auto pr-1 overflow-x-auto">
-                            <!-- Visual connected flow steps block -->
-                            <div class="flex items-center space-x-2 pb-2 min-w-[700px]">
-                                ${data.steps.map((step, idx) => `
-                                    <div class="flex items-center">
-                                        <div class="p-2 bg-slate-900 border border-slate-800 rounded text-center w-28 shrink-0 hover:border-eskobaRed transition-all">
-                                            <span class="w-4 h-4 rounded-full bg-eskobaRed/20 text-eskobaRed flex items-center justify-center text-[8px] font-black font-space mx-auto mb-1">${idx+1}</span>
-                                            <p class="text-[9px] font-bold text-white leading-tight truncate-two-lines" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis;">${step}</p>
-                                        </div>
-                                        ${idx < data.steps.length - 1 ? `
-                                            <div class="text-slate-600 px-1 text-xs"><i class="fa-solid fa-arrow-right pulsing-line"></i></div>
-                                        ` : ''}
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        ${bmBoxHtml(data.bm_box)}
-                    </div>
-                `;
-            }
-
-            if (slide.type === "closing_slide") {
-                return `
-                    <div class="h-full flex flex-col justify-between p-6 md:p-10 text-center relative overflow-hidden">
-                        <!-- Header -->
-                        <div class="flex justify-between items-start z-10 text-left">
-                            <span class="text-xs font-bold text-eskobaRed uppercase tracking-widest font-space"><i class="fa-solid fa-quote-left mr-1.5"></i>Eskoba Ultimate Commandment</span>
-                            <span class="text-xs font-mono text-slate-500">THE MEN OF DATA</span>
-                        </div>
-
-                        <!-- Core Commandment Quote -->
-                        <div class="my-auto max-w-3xl mx-auto space-y-4 z-10">
-                            <h2 class="font-space text-3xl md:text-5xl font-black italic tracking-tight text-white leading-tight">
-                                "${data.quote}"
-                            </h2>
-                            <div class="p-2 bg-slate-900/80 rounded border-l-4 border-eskobaRed max-w-xl mx-auto">
-                                <span class="text-[9px] text-eskobaRed font-bold uppercase tracking-wider block font-space">SOP Keputusan:</span>
-                                <span class="text-xs text-slate-300 italic">"${data.bm_quote}"</span>
-                            </div>
-                            
-                            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center pt-3">
-                                ${data.points.map(pt => `
-                                    <div class="bg-slate-950/60 p-2 rounded border border-slate-850">
-                                        <h6 class="text-[10px] font-bold text-white leading-tight">${pt.en}</h6>
-                                        <p class="text-[8px] text-slate-500 italic mt-0.5 leading-snug">${pt.bm}</p>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-
-                        <!-- Final Message -->
-                        <div class="mt-4 border-t border-slate-800/60 pt-3 z-10 text-left">
-                            <p class="text-[10px] text-slate-400 font-medium leading-relaxed max-w-4xl">${data.final_msg}</p>
-                        </div>
-                    </div>
-                `;
-            }
-
-            return `<div>No Template renderer matching type: ${slide.type}</div>`;
-        }
-
-        // HTML Slides Injector loop
-        const slidesWrapper = document.getElementById('slides-wrapper');
-        
-        function compileSlidesHtml() {
-            slidesWrapper.innerHTML = '';
-            slideMetadata.forEach(slide => {
-                const activeClass = slide.idx === currentSlide ? 'slide-active' : 'slide-hidden';
-                const card = document.createElement('div');
-                card.className = `slide-card absolute inset-0 bg-[#0F1626] flex flex-col justify-between ${activeClass}`;
-                card.setAttribute('data-slide-index', slide.idx);
-                card.innerHTML = renderSlideHtml(slide);
-                slidesWrapper.appendChild(card);
-            });
-        }
-
-        // DOM Controllers & Sidebar Navigation update
-        const sidebarList = document.getElementById('sidebar-list');
-        const slideProgressBadge = document.getElementById('slide-progress-badge');
-        const slideNumIndicator = document.getElementById('slide-num-indicator');
-        const slideProgressBar = document.getElementById('slide-progress-bar');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const autoplayBtn = document.getElementById('autoplay-btn');
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-
-        function populateSidebar() {
-            sidebarList.innerHTML = '';
-            slideMetadata.forEach((slide) => {
-                const item = document.createElement('button');
-                item.className = `w-full text-left px-2 py-1.5 rounded-lg text-[11px] font-medium flex items-center gap-2.5 transition-all ${
-                    slide.idx === currentSlide 
-                    ? 'bg-eskobaRed/10 border border-eskobaRed/35 text-white shadow-md' 
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/60'
-                }`;
-                item.onclick = () => selectSlide(slide.idx);
-                
-                // Index Indicator
-                const numSpan = document.createElement('span');
-                numSpan.className = `font-mono px-1 py-0.5 rounded text-[9px] ${
-                    slide.idx === currentSlide ? 'bg-eskobaRed text-white font-bold' : 'bg-slate-800 text-slate-500'
-                }`;
-                numSpan.innerText = String(slide.idx).padStart(2, '0');
-                
-                const titleSpan = document.createElement('span');
-                titleSpan.className = 'truncate font-space';
-                titleSpan.innerText = slide.title;
-
-                item.appendChild(numSpan);
-                item.appendChild(titleSpan);
-                sidebarList.appendChild(item);
-            });
-        }
-
-        function selectSlide(index) {
-            if (index < 1 || index > totalSlides) return;
-            currentSlide = index;
-
-            // Trigger slide card transitions
-            const domSlides = document.querySelectorAll('.slide-card');
-            domSlides.forEach((slide) => {
-                const slideIdx = parseInt(slide.getAttribute('data-slide-index'));
-                if (slideIdx === currentSlide) {
-                    slide.classList.remove('slide-hidden');
-                    slide.classList.add('slide-active');
-                } else {
-                    slide.classList.remove('slide-active');
-                    slide.classList.add('slide-hidden');
-                }
-            });
-
-            // Update UI widgets
-            slideProgressBadge.innerText = `${currentSlide} / ${totalSlides}`;
-            slideNumIndicator.innerText = `${String(currentSlide).padStart(2, '0')} // ${String(totalSlides).padStart(2, '0')}`;
-            
-            const progressPercentage = (currentSlide / totalSlides) * 100;
-            slideProgressBar.style.width = `${progressPercentage}%`;
-
-            populateSidebar();
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides) {
-                selectSlide(currentSlide + 1);
-            } else {
-                selectSlide(1); // loop back
-            }
-        }
-
-        function prevSlide() {
-            if (currentSlide > 1) {
-                selectSlide(currentSlide - 1);
-            } else {
-                selectSlide(totalSlides); // loop back
-            }
-        }
-
-        function toggleAutoplay() {
-            if (autoplayInterval) {
-                clearInterval(autoplayInterval);
-                autoplayInterval = null;
-                autoplayBtn.innerHTML = '<i class="fa-solid fa-play text-[10px]"></i> <span>Auto Play</span>';
-                autoplayBtn.classList.remove('border-eskobaRed', 'text-white');
-            } else {
-                autoplayInterval = setInterval(nextSlide, 5000); // 5s auto shift
-                autoplayBtn.innerHTML = '<i class="fa-solid fa-pause text-eskobaRed text-[10px]"></i> <span class="text-white font-bold">Playing</span>';
-                autoplayBtn.classList.add('border-eskobaRed');
-            }
-        }
-
-        function toggleFullscreen() {
-            const container = document.querySelector('.slide-container');
-            if (!document.fullscreenElement) {
-                container.requestFullscreen().catch((err) => {
-                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
-                });
-                fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress text-sm"></i>';
-            } else {
-                document.exitFullscreen();
-                fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand text-sm"></i>';
-            }
-        }
-
-            // Custom Brand Colors Definition (RGB matching Eskoba Corporate palette)
-            const COLOR_DEEP_NAVY = '060A13';
-            const COLOR_RED = 'E11D48';
-            const COLOR_CYAN = '06B6D4';
-            const COLOR_WHITE = 'FFFFFF';
-            const COLOR_MUTED = '94A3B8';
-
-            slideMetadata.forEach((s) => {
-                let pSlide = pptx.addSlide();
-                pSlide.background = { color: COLOR_DEEP_NAVY };
-
-                // Corporate Footer & header badge on all slides
-                pSlide.addText("ESKOBA.MARKETING // THE MEN OF DATA", {
-                    x: 0.5, y: 0.3, w: '80%', h: 0.3, fontFace: 'Space Grotesk', fontSize: 10, color: COLOR_RED, bold: true
-                });
-
-                pSlide.addText(`SLIDE ${String(s.idx).padStart(2, '0')} // ANDROMEDA v3.0`, {
-                    x: 10.5, y: 0.3, w: '25%', h: 0.3, fontFace: 'Plus Jakarta Sans', fontSize: 10, color: COLOR_MUTED, align: 'right'
-                });
-
-                // Primary English Title on Slide
-                pSlide.addText(s.title.toUpperCase(), {
-                    x: 0.5, y: 0.7, w: '90%', h: 0.6, fontFace: 'Space Grotesk', fontSize: 24, color: COLOR_WHITE, bold: true
-                });
-
-                // Conditional layout parsing for Slide exporter
-                const d = s.content;
-
-                if (s.type === "cover") {
-                    pSlide.addText("How To Scale To RM1,000/Day\nWith Meta Andromeda", {
-                        x: 0.5, y: 1.8, w: '85%', h: 1.8, fontFace: 'Space Grotesk', fontSize: 34, color: COLOR_WHITE, bold: true, breakLine: true
-                    });
-                    pSlide.addText(d.subtitle, {
-                        x: 0.5, y: 3.8, w: '80%', h: 0.6, fontFace: 'Plus Jakarta Sans', fontSize: 15, color: COLOR_MUTED
-                    });
-                    pSlide.addText(`Maksud mudah: "${d.bm_subtitle}"`, {
-                        x: 0.5, y: 4.8, w: '80%', h: 1.2, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_CYAN, italic: true
-                    });
-                } 
-                else if (s.type === "concept") {
-                    pSlide.addText(d.left_title.toUpperCase(), { x: 0.5, y: 1.6, w: '40%', h: 0.4, fontFace: 'Space Grotesk', fontSize: 16, color: COLOR_MUTED, bold: true });
-                    let leftListText = d.left_items.map(item => `• ${item.en} (${item.bm})`).join('\n');
-                    pSlide.addText(leftListText, { x: 0.5, y: 2.1, w: '40%', h: 2.0, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_MUTED });
-
-                    pSlide.addText(d.right_title.toUpperCase(), { x: 5.5, y: 1.6, w: '40%', h: 0.4, fontFace: 'Space Grotesk', fontSize: 16, color: COLOR_RED, bold: true });
-                    let rightListText = d.right_items.map(item => `• ${item.en} (${item.bm})`).join('\n');
-                    pSlide.addText(rightListText, { x: 5.5, y: 2.1, w: '40%', h: 2.0, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_WHITE });
-
-                    pSlide.addText(`Maksud mudah: "${d.bm_key}"`, { x: 0.5, y: 4.8, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "pyramid") {
-                    let pyramidText = d.layers.map(l => `[Level ${l.lvl}] ${l.label} — ${l.bm}`).join('\n');
-                    pSlide.addText(pyramidText, { x: 0.5, y: 1.6, w: '90%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 13, color: COLOR_WHITE, lineSpacing: 24 });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "timeline") {
-                    let timelineText = d.steps.map(step => `${step.phase} (${step.period}) -> Budget: ${step.budget} -> ${step.vol} -> ${step.bm}`).join('\n\n');
-                    pSlide.addText(timelineText, { x: 0.5, y: 1.5, w: '90%', h: 3.2, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "campaign_structure") {
-                    pSlide.addText(`CAMPAIGN: ${d.campaign}\nAD SET: ${d.ad_set}\nCREATIVES: ${d.ads_vol}\n\nWarning: ${d.warning_bm}`, {
-                        x: 0.5, y: 1.6, w: '90%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 13, color: COLOR_WHITE
-                    });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "matrix") {
-                    let matrixText = d.rows.map(row => `• [${row.cat}] : ${row.bm_mean} -> (${row.purpose}) -> ${row.var1} / ${row.var2} / ${row.var3}`).join('\n\n');
-                    pSlide.addText(matrixText, { x: 0.5, y: 1.5, w: '90%', h: 3.2, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "checklist") {
-                    let dosText = "DOs / Tindakan Team:\n" + d.dos.map(doItem => `✓ ${doItem.en} (${doItem.bm})`).join('\n');
-                    let dontsText = "DONTs / Jangan Buat:\n" + d.donts.map(dontItem => `✗ ${dontItem.en} (${dontItem.bm})`).join('\n');
-                    
-                    pSlide.addText(dosText, { x: 0.5, y: 1.6, w: '43%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(dontsText, { x: 5.3, y: 1.6, w: '43%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_RED });
-                    
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "kpi_review") {
-                    let kpisText = d.metrics.map(m => `• ${m.name} (${m.bm}) -> Pass: ${m.healthy} / Fail: ${m.weak} -> Action: ${m.action}`).join('\n\n');
-                    pSlide.addText(kpisText, { x: 0.5, y: 1.5, w: '90%', h: 3.2, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type.startsWith("conditional_logic")) {
-                    let rulesText = d.rules.map((r, i) => {
-                        const symptom = r.problem || r.prob || r.if;
-                        const action = r.action || r.then;
-                        return `Symptom ${i+1}: ${symptom}\n -> SOP Action: ${action}`;
-                    }).join('\n\n');
-                    
-                    pSlide.addText(rulesText, { x: 0.5, y: 1.4, w: '90%', h: 3.5, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "budget_ladder") {
-                    let stepsText = d.steps.map((step, idx) => `Step ${idx+1}: ${step.from} -> ${step.to} / Condition: ${step.cond}`).join('\n\n');
-                    pSlide.addText(stepsText, { x: 0.5, y: 1.6, w: '45%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_WHITE });
-                    
-                    let checklistText = "Checklist before scale:\n" + d.checklist.map(c => `✓ ${c}`).join('\n');
-                    pSlide.addText(checklistText, { x: 5.2, y: 1.6, w: '43%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_MUTED });
-                    
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "hub_spoke") {
-                    pSlide.addText(`Core Winning Concept: ${d.source}`, { x: 0.5, y: 1.5, w: '90%', h: 0.4, fontFace: 'Space Grotesk', fontSize: 14, color: COLOR_RED, bold: true });
-                    let spokesText = d.spokes.map(sp => `• ${sp.name} — ${sp.desc}`).join('\n');
-                    pSlide.addText(spokesText, { x: 0.5, y: 2.0, w: '90%', h: 2.5, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_WHITE });
-                    pSlide.addText(d.goal, { x: 0.5, y: 4.6, w: '90%', h: 0.4, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_CYAN, bold: true });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "campaign_split" || s.type === "campaign_split_5") {
-                    let splitText = d.split.map(sp => `• ${sp.name || sp.campaign} (${sp.budget} - ${sp.pct}): ${sp.obj || sp.desc}`).join('\n\n');
-                    pSlide.addText(splitText, { x: 0.5, y: 1.6, w: '90%', h: 3.0, fontFace: 'Plus Jakarta Sans', fontSize: 13, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "global_matrix") {
-                    let matrixText = d.matrix.map(m => `Symptom: ${m.sym} (${m.bm_sym})\n -> Diagnosis: ${m.diag}\n -> Act 1: ${m.act1} / Act 2: ${m.act2}`).join('\n\n');
-                    pSlide.addText(matrixText, { x: 0.5, y: 1.4, w: '90%', h: 3.5, fontFace: 'Plus Jakarta Sans', fontSize: 10, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "rules_cards") {
-                    let rulesText = d.rules.map(r => `• IF Hook ${r.cond} -> THEN: ${r.act}`).join('\n\n');
-                    pSlide.addText(rulesText, { x: 0.5, y: 1.5, w: '90%', h: 3.3, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "phase_gate") {
-                    let gatesText = d.gates.map(g => `Gate: ${g.move}\nMust have:\n` + g.must.map(m => ` - ${m}`).join('\n')).join('\n\n');
-                    pSlide.addText(gatesText, { x: 0.5, y: 1.5, w: '90%', h: 3.3, fontFace: 'Plus Jakarta Sans', fontSize: 10, color: COLOR_WHITE });
-                    pSlide.addText(d.rule, { x: 0.5, y: 4.8, w: '90%', h: 0.4, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, bold: true });
-                } 
-                else if (s.type === "weekly_system") {
-                    let daysText = d.days.map(dy => `• ${dy.name} -> Buyer: ${dy.mb} / Creative: ${dy.ct} / Lead: ${dy.lead}`).join('\n\n');
-                    pSlide.addText(daysText, { x: 0.5, y: 1.5, w: '90%', h: 3.3, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "flowchart_final") {
-                    let flowchartText = d.steps.map((st, i) => `Step ${i+1}: ${st}`).join('  >>>  ');
-                    pSlide.addText(flowchartText, { x: 0.5, y: 2.0, w: '90%', h: 2.5, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_WHITE, breakLine: true });
-                    pSlide.addText(`Maksud mudah: "${d.bm_box}"`, { x: 0.5, y: 5.0, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                } 
-                else if (s.type === "closing_slide") {
-                    pSlide.addText(`"${d.quote}"`, { x: 0.5, y: 1.6, w: '90%', h: 1.0, fontFace: 'Space Grotesk', fontSize: 32, color: COLOR_WHITE, italic: true, bold: true });
-                    pSlide.addText(`SOP Keputusan: "${d.bm_quote}"`, { x: 0.5, y: 2.7, w: '90%', h: 0.5, fontFace: 'Plus Jakarta Sans', fontSize: 14, color: COLOR_RED, bold: true });
-                    let pointsText = d.points.map(p => `• ${p.en} (${p.bm})`).join('\n');
-                    pSlide.addText(pointsText, { x: 0.5, y: 3.3, w: '90%', h: 1.5, fontFace: 'Plus Jakarta Sans', fontSize: 12, color: COLOR_MUTED });
-                    pSlide.addText(d.final_msg, { x: 0.5, y: 4.9, w: '90%', h: 1.0, fontFace: 'Plus Jakarta Sans', fontSize: 11, color: COLOR_CYAN, italic: true });
-                }
-            });
-
-            // Write File Trigger
-            pptx.writeFile({ fileName: "Eskoba_Meta_Andromeda_Scaling_2026_Blueprint.pptx" });
-        }
-
-        // Initialize state variables
-        let currentSlide = 1;
-        const totalSlides = slideMetadata.length;
-        let autoplayInterval = null;
-
-        // Start HTML compilation
-        compileSlidesHtml();
-
-        // Start sidebar rendering
-        populateSidebar();
-    </script>
+    let currentSlide = 1;
+    const totalSlides = slideMetadata.length;
+
+    const sidebarList = document.getElementById('sidebar-list');
+    const slideContent = document.getElementById('slide-content');
+    const slideProgressBadge = document.getElementById('slide-progress-badge');
+    const slideNumIndicator = document.getElementById('slide-num-indicator');
+    const slideProgressBar = document.getElementById('slide-progress-bar');
+
+    function esc(value) {
+      return String(value ?? '').replace(/[&<>"']/g, function(ch) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
+      });
+    }
+
+    function bmBox(text) {
+      if (!text) return '';
+      return `<div class="bm-box"><strong>Maksud mudah & Tindakan Team</strong>${esc(text)}</div>`;
+    }
+
+    function listItems(items, getMain, getSub) {
+      return `<ul class="item-list">${items.map(item => `<li>${esc(getMain(item))}${getSub ? `<small>${esc(getSub(item))}</small>` : ''}</li>`).join('')}</ul>`;
+    }
+
+    function renderGeneric(slide) {
+      const d = slide.content || {};
+      let body = '';
+
+      if (slide.type === 'cover') {
+        body = `
+          <span class="eyebrow">Internal SOP Release</span>
+          <h1 class="slide-heading">How To Scale To <span class="red">RM1,000/Day</span><br>With Meta Andromeda</h1>
+          <p class="subtitle">${esc(d.subtitle)}</p>
+          ${bmBox(d.bm_subtitle)}
+        `;
+      }
+
+      else if (slide.type === 'concept') {
+        body = `
+          <span class="eyebrow">Strategic Shift</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-2">
+            <div class="card"><h3>${esc(d.left_title)}</h3>${listItems(d.left_items || [], x => x.en, x => x.bm)}</div>
+            <div class="card"><h3 style="color:var(--red)">${esc(d.right_title)}</h3>${listItems(d.right_items || [], x => x.en, x => x.bm)}</div>
+          </div>
+          <p class="subtitle"><strong>Key:</strong> ${esc(d.key_message || '')}</p>
+          ${bmBox(d.bm_key)}
+        `;
+      }
+
+      else if (slide.type === 'pyramid') {
+        body = `
+          <span class="eyebrow">Scaling Pyramid</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="card">${listItems([...(d.layers || [])].sort((a,b)=>b.lvl-a.lvl), x => `Level ${x.lvl} — ${x.label}`, x => x.bm)}</div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'timeline') {
+        body = `
+          <span class="eyebrow">Roadmap</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="timeline">
+            ${(d.steps || []).map(s => `<div class="phase"><b>${esc(s.phase)} • ${esc(s.period)}</b><strong>${esc(s.budget)}</strong><br><span class="muted">${esc(s.vol)}</span><p>${esc(s.bm)}</p></div>`).join('')}
+          </div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'matrix') {
+        body = `
+          <span class="eyebrow">Creative Matrix</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <table>
+            <thead><tr><th>Category</th><th>BM Meaning</th><th>Purpose</th><th>Creative 1</th><th>Creative 2</th><th>Creative 3</th></tr></thead>
+            <tbody>${(d.rows || []).map(r => `<tr><td><b>${esc(r.cat)}</b></td><td>${esc(r.bm_mean)}</td><td>${esc(r.purpose)}</td><td>${esc(r.var1)}</td><td>${esc(r.var2)}</td><td>${esc(r.var3)}</td></tr>`).join('')}</tbody>
+          </table>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'checklist') {
+        body = `
+          <span class="eyebrow">Checklist</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-2">
+            <div class="card"><h3 style="color:var(--green)">Wajib Buat</h3>${listItems(d.dos || [], x => x.en, x => x.bm)}</div>
+            <div class="card"><h3 style="color:var(--red)">Jangan Buat</h3>${listItems(d.donts || [], x => x.en, x => x.bm)}</div>
+          </div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'kpi_review') {
+        body = `
+          <span class="eyebrow">Metrics Review</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <table>
+            <thead><tr><th>Metric</th><th>BM</th><th>Healthy</th><th>Weak</th><th>Action</th></tr></thead>
+            <tbody>${(d.metrics || []).map(m => `<tr><td><b>${esc(m.name)}</b></td><td>${esc(m.bm)}</td><td style="color:var(--green)">${esc(m.healthy)}</td><td style="color:var(--red)">${esc(m.weak)}</td><td>${esc(m.action)}</td></tr>`).join('')}</tbody>
+          </table>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type.includes('conditional_logic')) {
+        body = `
+          <span class="eyebrow">Conditional Logic</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <table>
+            <thead><tr><th>Symptom</th><th>Cause / Diagnosis</th><th>SOP Action</th></tr></thead>
+            <tbody>${(d.rules || []).map(r => {
+              const symptom = r.cond || r.problem || r.prob || '';
+              const symptomBm = r.bm_cond || r.bm_prob || '';
+              const cause = r.diag || r.cause || '';
+              const causeBm = r.bm_diag || r.bm_cause || '';
+              const action = r.act || '';
+              return `<tr><td><b>${esc(symptom)}</b><br><span class="muted">${esc(symptomBm)}</span></td><td>${esc(cause)}<br><span class="muted">${esc(causeBm)}</span></td><td>${esc(action)}</td></tr>`;
+            }).join('')}</tbody>
+          </table>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'budget_ladder') {
+        body = `
+          <span class="eyebrow">Budget Ladder</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-2">
+            <div class="card"><h3>Budget Steps</h3>${listItems(d.steps || [], x => `${x.from} → ${x.to}`, x => x.cond)}</div>
+            <div class="card"><h3>Checklist</h3>${listItems(d.checklist || [], x => x)}</div>
+          </div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'hub_spoke') {
+        body = `
+          <span class="eyebrow">Creative Expansion</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="card"><h3>${esc(d.source)}</h3>${listItems(d.spokes || [], x => x.name, x => x.desc)}</div>
+          <p class="subtitle">${esc(d.goal || '')}</p>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type.includes('campaign_split')) {
+        body = `
+          <span class="eyebrow">Campaign Split</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-2">${(d.split || []).map(s => `<div class="card"><h3>${esc(s.name)} — ${esc(s.budget)} (${esc(s.pct)})</h3><p>${esc(s.obj || s.desc || '')}</p><p class="muted">${esc(s.bm_desc || '')}</p></div>`).join('')}</div>
+          ${d.inventory ? `<div class="card"><h3>Creative Inventory</h3>${listItems(Object.values(d.inventory), x => x)}</div>` : ''}
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'global_matrix') {
+        body = `
+          <span class="eyebrow">Troubleshooting</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <table>
+            <thead><tr><th>Symptom</th><th>Diagnosis</th><th>Action 1</th><th>Action 2</th></tr></thead>
+            <tbody>${(d.matrix || []).map(m => `<tr><td><b>${esc(m.sym)}</b><br><span class="muted">${esc(m.bm_sym)}</span></td><td>${esc(m.diag)}<br><span class="muted">${esc(m.bm_diag)}</span></td><td>${esc(m.act1)}</td><td>${esc(m.act2)}</td></tr>`).join('')}</tbody>
+          </table>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'rules_cards') {
+        body = `
+          <span class="eyebrow">IF-THEN Rules</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-3">${(d.rules || []).map(r => `<div class="card"><h3>IF</h3><p>${esc(r.cond)}</p><h3 style="color:var(--green)">THEN</h3><p>${esc(r.act)}</p></div>`).join('')}</div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'phase_gate') {
+        body = `
+          <span class="eyebrow">Phase Gate</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="grid-3">${(d.gates || []).map(g => `<div class="card"><h3>${esc(g.move)}</h3>${listItems(g.must || [], x => x)}</div>`).join('')}</div>
+          <p class="subtitle">${esc(d.rule || '')}</p>
+        `;
+      }
+
+      else if (slide.type === 'weekly_system') {
+        body = `
+          <span class="eyebrow">Weekly OS</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <table>
+            <thead><tr><th>Day</th><th>Media Buyer</th><th>Creative Team</th><th>Leader</th></tr></thead>
+            <tbody>${(d.days || []).map(day => `<tr><td><b>${esc(day.name)}</b></td><td>${esc(day.mb)}</td><td>${esc(day.ct)}</td><td>${esc(day.lead)}</td></tr>`).join('')}</tbody>
+          </table>
+          <div class="card"><h3>Weekly Targets</h3>${listItems(d.targets || [], x => x)}</div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'flowchart_final') {
+        body = `
+          <span class="eyebrow">Final Flow</span>
+          <h2 class="slide-heading">${esc(slide.title)}</h2>
+          <div class="card">${listItems((d.steps || []).map((x,i)=>`${i+1}. ${x}`), x => x)}</div>
+          ${bmBox(d.bm_box)}
+        `;
+      }
+
+      else if (slide.type === 'closing_slide') {
+        body = `
+          <span class="eyebrow">Final Rule</span>
+          <h2 class="slide-heading">"${esc(d.quote)}"</h2>
+          <p class="subtitle">"${esc(d.bm_quote)}"</p>
+          <div class="grid-3">${(d.points || []).map(p => `<div class="card"><h3>${esc(p.en)}</h3><p class="muted">${esc(p.bm)}</p></div>`).join('')}</div>
+          <p class="subtitle">${esc(d.final_msg || '')}</p>
+        `;
+      }
+
+      else {
+        body = `<h2 class="slide-heading">${esc(slide.title)}</h2><pre>${esc(JSON.stringify(d, null, 2))}</pre>`;
+      }
+
+      return body;
+    }
+
+    function renderSlide() {
+      const slide = slideMetadata[currentSlide - 1];
+      slideContent.innerHTML = renderGeneric(slide);
+
+      slideProgressBadge.textContent = `${currentSlide} / ${totalSlides}`;
+      slideNumIndicator.textContent = `${String(currentSlide).padStart(2, '0')} // ${String(totalSlides).padStart(2, '0')}`;
+      slideProgressBar.style.width = `${(currentSlide / totalSlides) * 100}%`;
+
+      [...document.querySelectorAll('.slide-btn')].forEach((btn, idx) => {
+        btn.classList.toggle('active', idx + 1 === currentSlide);
+      });
+    }
+
+    function populateSidebar() {
+      sidebarList.innerHTML = slideMetadata.map((s, idx) => `
+        <button class="slide-btn ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx + 1})">
+          <span class="slide-num">${String(idx + 1).padStart(2, '0')}</span>
+          <span class="slide-title-mini">${esc(s.title)}</span>
+        </button>
+      `).join('');
+    }
+
+    function goToSlide(n) {
+      currentSlide = Math.max(1, Math.min(totalSlides, n));
+      renderSlide();
+    }
+
+    function nextSlide() {
+      goToSlide(currentSlide === totalSlides ? 1 : currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide === 1 ? totalSlides : currentSlide - 1);
+    }
+
+    document.getElementById('next-btn').addEventListener('click', nextSlide);
+    document.getElementById('prev-btn').addEventListener('click', prevSlide);
+
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      const frame = document.querySelector('.frame');
+      if (!document.fullscreenElement) frame.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    populateSidebar();
+    renderSlide();
+  </script>
 </body>
 </html>
