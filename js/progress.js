@@ -1,58 +1,52 @@
-import { auth, db } from "../firebase/config.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
-
-import {
+  getFirestore,
   doc,
-  setDoc,
-  getDoc,
-  serverTimestamp
-} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+  setDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-const moduleId = "meta-advertising-andromeda2026";
-const lessonId = "lesson-2";
+import {
+  getAuth
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-onAuthStateChanged(auth, async (user) => {
-  if (!user) {
-    window.location.href = "../../login.html";
-    return;
-  }
+const firebaseConfig = {
+  apiKey: "AIzaSyBRrUPI-z0JWD-q5UdmLf_7V09zRDHKbYY",
+  authDomain: "eskoba-marketing.firebaseapp.com",
+  projectId: "eskoba-marketing",
+  storageBucket: "eskoba-marketing.firebasestorage.app",
+  messagingSenderId: "940559185905",
+  appId: "1:940559185905:web:f561e9b3b863f737097650",
+  measurementId: "G-9CCPK3Q9K8"
+};
 
-  const progressRef = doc(db, "progress", user.uid, "lessons", lessonId);
-  const progressSnap = await getDoc(progressRef);
+const app = initializeApp(firebaseConfig);
 
-  const btn = document.getElementById("completeBtn");
-
-  if (progressSnap.exists() && progressSnap.data().completed === true) {
-    btn.innerText = "Completed ✓";
-    btn.disabled = true;
-    btn.style.background = "#64748b";
-  }
-});
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 window.markComplete = async function() {
+
   const user = auth.currentUser;
 
   if (!user) {
-    alert("Please login first.");
+    alert("Please login first");
     return;
   }
 
-  const progressRef = doc(db, "progress", user.uid, "lessons", lessonId);
+  await setDoc(
+    doc(
+      db,
+      "progress",
+      user.uid,
+      "lessons",
+      "lesson-2"
+    ),
+    {
+      completed: true,
+      completedAt: new Date()
+    }
+  );
 
-  await setDoc(progressRef, {
-    moduleId: moduleId,
-    lessonId: lessonId,
-    completed: true,
-    completedAt: serverTimestamp()
-  });
-
-  const btn = document.getElementById("completeBtn");
-  btn.innerText = "Completed ✓";
-  btn.disabled = true;
-  btn.style.background = "#64748b";
-
-  alert("Lesson marked as complete.");
+  alert("Lesson Completed!");
 };
