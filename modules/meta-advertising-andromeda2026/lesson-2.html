@@ -3,468 +3,122 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How To Scale To RM1,000/Day - Eskoba Marketing</title>
-
+  <title>How to Scale Andromeda 2026 - RM1000 Spend Daily</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #060A13;
-      --panel: #0F1626;
-      --panel2: #111827;
-      --line: #223047;
-      --muted: #94A3B8;
-      --text: #F8FAFC;
-      --red: #E11D48;
-      --cyan: #06B6D4;
-      --green: #22C55E;
-      --yellow: #FBBF24;
+      --bg:#060A13;
+      --panel:#0F1626;
+      --panel2:#111B2E;
+      --line:#233047;
+      --text:#F8FAFC;
+      --muted:#94A3B8;
+      --red:#E11D48;
+      --cyan:#06B6D4;
+      --green:#22C55E;
+      --yellow:#F59E0B;
     }
-
     * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Plus Jakarta Sans", Arial, sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .topbar {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 28px;
-      border-bottom: 1px solid var(--line);
-      background: #090D16;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
-
-    .brand-mark {
-      width: 32px;
-      height: 32px;
-      border: 2px solid var(--text);
-      border-radius: 8px;
-      transform: rotate(45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .brand-dot {
-      width: 12px;
-      height: 12px;
-      background: var(--red);
-      border-radius: 3px;
-    }
-
-    .brand-text span { color: var(--red); }
-
-    .badge {
-      border: 1px solid var(--line);
-      background: #121A2B;
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 310px 1fr;
-      min-height: calc(100vh - 72px);
-    }
-
-    .sidebar {
-      background: #090D16;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      min-height: calc(100vh - 72px);
-    }
-
-    .sidebar-head {
-      padding: 16px;
-      border-bottom: 1px solid var(--line);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .08em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .slide-list {
-      padding: 12px;
-      overflow-y: auto;
-      flex: 1;
-    }
-
-    .slide-btn {
-      width: 100%;
-      border: 1px solid transparent;
-      background: transparent;
-      color: var(--muted);
-      padding: 10px;
-      border-radius: 10px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      text-align: left;
-      cursor: pointer;
-      margin-bottom: 6px;
-      font-weight: 700;
-      font-size: 12px;
-    }
-
-    .slide-btn:hover { background: #111827; color: var(--text); }
-
-    .slide-btn.active {
-      background: rgba(225, 29, 72, .12);
-      border-color: rgba(225, 29, 72, .5);
-      color: var(--text);
-    }
-
-    .slide-num {
-      background: #1E293B;
-      color: var(--muted);
-      border-radius: 6px;
-      padding: 3px 6px;
-      font-family: monospace;
-      font-size: 11px;
-      flex: 0 0 auto;
-    }
-
-    .slide-btn.active .slide-num {
-      background: var(--red);
-      color: white;
-    }
-
-    .slide-title-mini {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .main {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
-
-    .lesson-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .backlink {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .backlink:hover { color: var(--text); }
-
-    .frame {
-      width: min(1100px, 100%);
-      margin: 0 auto;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--panel);
-      min-height: 620px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .slide-content {
-      padding: 44px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      background: rgba(225, 29, 72, .10);
-      border: 1px solid rgba(225, 29, 72, .35);
-      color: var(--red);
-      border-radius: 999px;
-      padding: 7px 11px;
-      font-size: 11px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      margin: 0;
-      line-height: 1.05;
-    }
-
-    .slide-heading {
-      font-size: clamp(30px, 4.4vw, 58px);
-      letter-spacing: -0.04em;
-      max-width: 900px;
-    }
-
-    .slide-heading .red { color: var(--red); }
-
-    .subtitle {
-      color: var(--muted);
-      font-size: 17px;
-      max-width: 780px;
-      line-height: 1.55;
-    }
-
-    .bm-box {
-      border-left: 4px solid var(--cyan);
-      background: rgba(6, 182, 212, .07);
-      padding: 14px 16px;
-      border-radius: 0 12px 12px 0;
-      color: #D7E8F5;
-      font-size: 14px;
-      line-height: 1.55;
-      margin-top: auto;
-    }
-
-    .bm-box strong {
-      color: var(--cyan);
-      display: block;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      margin-bottom: 4px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .card {
-      border: 1px solid var(--line);
-      background: #111827;
-      border-radius: 14px;
-      padding: 16px;
-    }
-
-    .card h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .muted { color: var(--muted); }
-
-    .item-list {
-      display: grid;
-      gap: 10px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .item-list li {
-      border: 1px solid rgba(148, 163, 184, .15);
-      background: rgba(15, 23, 42, .65);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    .item-list small {
-      display: block;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    th, td {
-      border-bottom: 1px solid var(--line);
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background: #0B1220;
-      color: var(--text);
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-    }
-
-    td { color: #D7DEE8; }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    .phase {
-      border: 1px solid var(--line);
-      background: #111827;
-      border-radius: 14px;
-      padding: 14px;
-      font-size: 12px;
-    }
-
-    .phase b {
-      color: var(--cyan);
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      background: #090D16;
-      padding: 14px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .navgroup {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .navbtn {
-      background: #121A2B;
-      border: 1px solid var(--line);
-      color: var(--text);
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .navbtn:hover { border-color: var(--red); }
-
-    .progress-wrap {
-      flex: 1;
-      max-width: 440px;
-      height: 6px;
-      background: #1E293B;
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 4%;
-      background: var(--red);
-      transition: width .15s linear;
-    }
-
-    .counter {
-      color: var(--muted);
-      font-family: monospace;
-      font-weight: 800;
-      font-size: 13px;
-    }
-
-    @media (max-width: 900px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { min-height: auto; max-height: 260px; }
-      .main { padding: 18px; }
-      .frame { min-height: 620px; }
-      .slide-content { padding: 26px; }
-      .grid-2, .grid-3, .timeline { grid-template-columns: 1fr; }
-      .badge { display: none; }
+    body { margin:0; font-family:'Plus Jakarta Sans', Arial, sans-serif; background:var(--bg); color:var(--text); }
+    .topbar { height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 28px; border-bottom:1px solid var(--line); background:#090D16; position:sticky; top:0; z-index:5; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.08em; }
+    .logo { width:36px; height:36px; border:2px solid #fff; transform:rotate(45deg); border-radius:10px; display:flex; align-items:center; justify-content:center; }
+    .logo:after { content:""; width:12px; height:12px; background:var(--red); border-radius:3px; display:block; }
+    .brand span { color:var(--muted); font-weight:500; }
+    .pill { padding:7px 12px; border:1px solid var(--line); border-radius:999px; color:var(--muted); font-size:12px; font-weight:700; }
+    .layout { display:grid; grid-template-columns:320px 1fr; min-height:calc(100vh - 72px); }
+    .sidebar { border-right:1px solid var(--line); background:#080D18; display:flex; flex-direction:column; }
+    .side-head { padding:18px 18px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:13px; font-weight:800; letter-spacing:.05em; }
+    .slide-list { padding:14px 10px; overflow:auto; max-height:calc(100vh - 180px); }
+    .slide-btn { width:100%; text-align:left; border:0; background:transparent; color:var(--muted); padding:10px 10px; border-radius:10px; display:flex; gap:10px; align-items:center; cursor:pointer; font-weight:700; font-size:13px; }
+    .slide-btn:hover { background:#10192B; color:white; }
+    .slide-btn.active { background:rgba(225,29,72,.16); color:white; outline:1px solid rgba(225,29,72,.45); }
+    .num { min-width:28px; height:24px; border-radius:7px; background:#1B2940; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:#C7D2FE; }
+    .active .num { background:var(--red); color:white; }
+    .main { padding:28px 34px; display:flex; flex-direction:column; gap:18px; }
+    .navlinks { display:flex; justify-content:space-between; font-weight:800; }
+    .navlinks a { color:var(--muted); text-decoration:none; }
+    .navlinks a:hover { color:white; }
+    .slide { flex:1; background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:38px 44px; min-height:600px; box-shadow:0 24px 60px rgba(0,0,0,.22); display:flex; flex-direction:column; gap:20px; }
+    .slide-kicker { color:var(--red); font-weight:900; text-transform:uppercase; letter-spacing:.08em; font-size:12px; }
+    h1 { font-size:50px; line-height:1.05; margin:0; letter-spacing:-.04em; }
+    h2 { font-size:38px; line-height:1.1; margin:0; letter-spacing:-.03em; }
+    h3 { margin:0 0 10px 0; font-size:18px; }
+    p { color:#CBD5E1; line-height:1.6; font-size:16px; }
+    .accent { color:var(--red); }
+    .bm { border-left:4px solid var(--cyan); background:rgba(6,182,212,.08); padding:14px 16px; border-radius:0 12px 12px 0; color:#DDF7FF; font-weight:700; margin-top:auto; }
+    .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .card { background:var(--panel2); border:1px solid var(--line); border-radius:14px; padding:16px; }
+    .card.red { border-color:rgba(225,29,72,.5); background:rgba(225,29,72,.08); }
+    .card.cyan { border-color:rgba(6,182,212,.45); background:rgba(6,182,212,.07); }
+    .card.green { border-color:rgba(34,197,94,.45); background:rgba(34,197,94,.07); }
+    .small { font-size:13px; color:var(--muted); }
+    ul { margin:8px 0 0 0; padding-left:20px; }
+    li { margin:8px 0; color:#DCE6F4; line-height:1.45; }
+    .tablewrap { overflow:auto; border:1px solid var(--line); border-radius:14px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { border-bottom:1px solid var(--line); padding:12px; text-align:left; vertical-align:top; }
+    th { background:#0B1220; color:white; font-size:12px; text-transform:uppercase; letter-spacing:.04em; }
+    td { color:#D7E0ED; }
+    .phase-list { display:flex; flex-direction:column; gap:10px; }
+    .phase { display:grid; grid-template-columns:150px 1fr; gap:14px; align-items:center; }
+    .phase .budget { background:var(--red); color:white; padding:14px; border-radius:12px; font-weight:900; text-align:center; }
+    .footer-controls { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .control-left { display:flex; align-items:center; gap:12px; }
+    button.control { background:#132039; color:white; border:1px solid var(--line); border-radius:10px; padding:10px 15px; cursor:pointer; font-weight:800; }
+    button.control:hover { border-color:var(--red); }
+    .bar { flex:1; height:6px; background:#162237; border-radius:999px; overflow:hidden; }
+    .bar-inner { height:100%; background:var(--red); width:0%; transition:width .15s ease; }
+    .tagrow { display:flex; flex-wrap:wrap; gap:8px; }
+    .tag { background:#17243B; border:1px solid var(--line); padding:8px 10px; border-radius:999px; font-weight:800; color:#E2E8F0; }
+    pre.fallback { white-space:pre-wrap; background:#0B1220; color:#D1D5DB; padding:16px; border-radius:12px; overflow:auto; max-height:420px; }
+    @media (max-width:900px) {
+      .layout { grid-template-columns:1fr; }
+      .sidebar { max-height:300px; }
+      .slide-list { max-height:220px; }
+      .main { padding:18px; }
+      .slide { padding:24px; min-height:auto; }
+      h1 { font-size:36px; } h2 { font-size:28px; }
+      .grid2,.grid3,.grid4 { grid-template-columns:1fr; }
+      .phase { grid-template-columns:1fr; }
     }
   </style>
 </head>
-
 <body>
   <header class="topbar">
-    <div class="brand">
-      <div class="brand-mark"><div class="brand-dot"></div></div>
-      <div>
-        <div class="brand-text">ESKOBA<span>.</span>MARKETING</div>
-        <div style="font-size:8px;color:var(--muted);letter-spacing:.45em;margin-top:3px;">THE MEN OF DATA</div>
-      </div>
-    </div>
-    <div class="badge">Andromeda v3.0 Blueprint</div>
+    <div class="brand"><div class="logo"></div><div>ESKOBA<span>.MARKETING</span><div class="small">THE MEN OF DATA</div></div></div>
+    <div class="pill">Andromeda v3.0 Blueprint</div>
   </header>
 
   <div class="layout">
     <aside class="sidebar">
-      <div class="sidebar-head">
-        <span>Slides SOP Guide</span>
-        <span id="slide-progress-badge">1 / 23</span>
-      </div>
-      <div class="slide-list" id="sidebar-list"></div>
+      <div class="side-head"><span>SLIDES SOP GUIDE</span><span id="progressBadge">1 / 23</span></div>
+      <div class="slide-list" id="slideList"></div>
     </aside>
 
     <main class="main">
-      <div class="lesson-top">
-        <a class="backlink" href="index.html">← Back to Module</a>
-        <a class="backlink" href="../../home.html">Back to Home</a>
+      <div class="navlinks">
+        <a href="index.html">← Back to Module</a>
+        <a href="../../home.html">Back to Home</a>
       </div>
-
-      <section class="frame">
-        <div class="slide-content" id="slide-content"></div>
-
-        <footer class="footer">
-          <div class="navgroup">
-            <button class="navbtn" id="prev-btn">‹</button>
-            <span class="counter" id="slide-num-indicator">01 // 23</span>
-            <button class="navbtn" id="next-btn">›</button>
-          </div>
-          <div class="progress-wrap"><div class="progress-bar" id="slide-progress-bar"></div></div>
-          <button class="navbtn" id="fullscreen-btn">⛶</button>
-        </footer>
-      </section>
+      <section class="slide" id="slideStage"></section>
+      <div class="footer-controls">
+        <div class="control-left">
+          <button class="control" id="prevBtn">‹ Prev</button>
+          <strong id="slideCounter">01 // 23</strong>
+          <button class="control" id="nextBtn">Next ›</button>
+        </div>
+        <div class="bar"><div class="bar-inner" id="progressBar"></div></div>
+      </div>
     </main>
   </div>
 
   <script>
-    const slideMetadata = [
+const slideMetadata = [
             {
                 idx: 1,
                 title: "How To Scale To RM1,000/Day With Meta Andromeda",
@@ -857,280 +511,96 @@
     let currentSlide = 1;
     const totalSlides = slideMetadata.length;
 
-    const sidebarList = document.getElementById('sidebar-list');
-    const slideContent = document.getElementById('slide-content');
-    const slideProgressBadge = document.getElementById('slide-progress-badge');
-    const slideNumIndicator = document.getElementById('slide-num-indicator');
-    const slideProgressBar = document.getElementById('slide-progress-bar');
+    const el = (id) => document.getElementById(id);
+    const esc = (v) => String(v ?? '');
 
-    function esc(value) {
-      return String(value ?? '').replace(/[&<>"']/g, function(ch) {
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];
-      });
-    }
+    function bmBox(text) { return text ? `<div class="bm">🇲🇾 ${esc(text)}</div>` : ''; }
+    function list(items) { return `<ul>${(items || []).map(x => `<li>${typeof x === 'string' ? esc(x) : `${esc(x.en || x.name || x.label || x.cond || x.sym || '')}${x.bm ? ` <span class="small">— ${esc(x.bm)}</span>` : ''}`}</li>`).join('')}</ul>`; }
+    function tags(items) { return `<div class="tagrow">${(items || []).map(x => `<span class="tag">${esc(x)}</span>`).join('')}</div>`; }
 
-    function bmBox(text) {
-      if (!text) return '';
-      return `<div class="bm-box"><strong>Maksud mudah & Tindakan Team</strong>${esc(text)}</div>`;
-    }
-
-    function listItems(items, getMain, getSub) {
-      return `<ul class="item-list">${items.map(item => `<li>${esc(getMain(item))}${getSub ? `<small>${esc(getSub(item))}</small>` : ''}</li>`).join('')}</ul>`;
-    }
-
-    function renderGeneric(slide) {
+    function renderSlide(slide) {
       const d = slide.content || {};
-      let body = '';
+      const title = `<div><div class="slide-kicker">Slide ${String(slide.idx).padStart(2,'0')} // Eskoba Performance Matrix</div><h2>${esc(slide.title)}</h2></div>`;
 
-      if (slide.type === 'cover') {
-        body = `
-          <span class="eyebrow">Internal SOP Release</span>
-          <h1 class="slide-heading">How To Scale To <span class="red">RM1,000/Day</span><br>With Meta Andromeda</h1>
-          <p class="subtitle">${esc(d.subtitle)}</p>
-          ${bmBox(d.bm_subtitle)}
-        `;
+      switch(slide.type) {
+        case 'cover':
+          return `<div class="slide-kicker">Internal SOP Release</div><h1>How To Scale To <span class="accent">RM1,000/Day</span><br>With Meta Andromeda</h1><p>${esc(d.subtitle)}</p>${bmBox(d.bm_subtitle)}`;
+
+        case 'concept':
+          return `${title}<div class="grid2"><div class="card"><h3>${esc(d.left_title)}</h3>${list(d.left_items)}</div><div class="card red"><h3>${esc(d.right_title)}</h3>${list(d.right_items)}</div></div><div class="card cyan"><h3>Key Scaling Principle</h3><p>${esc(d.key_message)}</p></div>${bmBox(d.bm_key)}`;
+
+        case 'pyramid':
+          return `${title}<div class="phase-list">${(d.layers || []).sort((a,b)=>b.lvl-a.lvl).map(l => `<div class="phase"><div class="budget">Level ${l.lvl}</div><div class="card"><h3>${esc(l.label)}</h3><p>${esc(l.bm)}</p></div></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+
+        case 'timeline':
+          return `${title}<div class="grid3">${(d.steps||[]).map(s => `<div class="card"><h3>${esc(s.phase)}</h3><p><strong>${esc(s.period)}</strong></p><p><span class="accent"><strong>${esc(s.budget)}</strong></span></p><p>${esc(s.vol)}</p><p>${esc(s.bm)}</p></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+
+        case 'campaign_structure':
+          return `${title}<div class="grid2"><div class="card red"><h3>Campaign</h3><p>${esc(d.campaign)}</p></div><div class="card cyan"><h3>Ad Set</h3><p>${esc(d.ad_set)}</p></div><div class="card"><h3>Creative Volume</h3><p><strong>${esc(d.ads_vol)}</strong></p></div><div class="card green"><h3>Creative Categories</h3>${tags(d.categories)}</div></div><div class="card red"><h3>Warning</h3><p>${esc(d.warning_bm)}</p></div>${bmBox(d.bm_box)}`;
+
+        case 'matrix':
+          return `${title}<div class="tablewrap"><table><thead><tr><th>Angle</th><th>BM Meaning</th><th>Purpose</th><th>Variation 1</th><th>Variation 2</th><th>Variation 3</th></tr></thead><tbody>${(d.rows||[]).map(r => `<tr><td><strong>${esc(r.cat)}</strong></td><td>${esc(r.bm_mean)}</td><td>${esc(r.purpose)}</td><td>${esc(r.var1)}</td><td>${esc(r.var2)}</td><td>${esc(r.var3)}</td></tr>`).join('')}</tbody></table></div>${bmBox(d.bm_box)}`;
+
+        case 'checklist':
+          return `${title}<div class="grid2"><div class="card green"><h3>Wajib Buat</h3>${list(d.dos)}</div><div class="card red"><h3>Jangan Buat</h3>${list(d.donts)}</div></div>${bmBox(d.bm_box)}`;
+
+        case 'kpi_review':
+          return `${title}<div class="tablewrap"><table><thead><tr><th>Metric</th><th>BM</th><th>Healthy</th><th>Weak</th><th>Action</th></tr></thead><tbody>${(d.metrics||[]).map(m => `<tr><td><strong>${esc(m.name)}</strong></td><td>${esc(m.bm)}</td><td>${esc(m.healthy)}</td><td>${esc(m.weak)}</td><td>${esc(m.action)}</td></tr>`).join('')}</tbody></table></div>${bmBox(d.bm_box)}`;
+
+        case 'budget_ladder':
+          return `${title}<div class="grid2"><div>${(d.steps||[]).map((s,i)=>`<div class="card"><h3>Step ${i+1}: ${esc(s.from)} → <span class="accent">${esc(s.to)}</span></h3><p>${esc(s.cond)}</p></div>`).join('')}</div><div class="card cyan"><h3>Checklist Before Scale</h3>${list(d.checklist)}</div></div>${bmBox(d.bm_box)}`;
+
+        case 'hub_spoke':
+          return `${title}<div class="card red"><h3>${esc(d.source)}</h3><p>${esc(d.goal)}</p></div><div class="grid4">${(d.spokes||[]).map(s=>`<div class="card"><h3>${esc(s.name)}</h3><p>${esc(s.desc)}</p></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+
+        case 'campaign_split':
+        case 'campaign_split_5':
+          return `${title}<div class="grid2">${(d.split||[]).map(s=>`<div class="card ${(s.name||'').toLowerCase().includes('scale') ? 'red':'cyan'}"><h3>${esc(s.name || s.campaign)}</h3><p><strong>${esc(s.budget)} / ${esc(s.pct)}</strong></p><p>${esc(s.desc || s.obj || '')}</p><p class="small">${esc(s.bm_desc || '')}</p></div>`).join('')}</div>${d.inventory ? `<div class="card green"><h3>Creative Inventory</h3><p>${esc(d.inventory.min)}</p><p>${esc(d.inventory.healthy)}</p><p>${esc(d.inventory.strong)}</p></div>` : `<div class="card"><h3>Rule</h3><p>${esc(d.rule)}</p></div>`}${bmBox(d.bm_box)}`;
+
+        case 'global_matrix':
+          return `${title}<div class="tablewrap"><table><thead><tr><th>Symptom</th><th>Diagnosis</th><th>Action 1</th><th>Action 2</th></tr></thead><tbody>${(d.matrix||[]).map(m=>`<tr><td><strong>${esc(m.sym)}</strong><br><span class="small">${esc(m.bm_sym)}</span></td><td>${esc(m.diag)}<br><span class="small">${esc(m.bm_diag)}</span></td><td>${esc(m.act1)}</td><td>${esc(m.act2)}</td></tr>`).join('')}</tbody></table></div>${bmBox(d.bm_box)}`;
+
+        case 'rules_cards':
+          return `${title}<div class="grid3">${(d.rules||[]).map(r=>`<div class="card"><div class="slide-kicker">IF</div><h3>${esc(r.cond)}</h3><div class="slide-kicker">THEN</div><p>${esc(r.act)}</p></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+
+        case 'phase_gate':
+          return `${title}<div class="grid3">${(d.gates||[]).map(g=>`<div class="card"><h3>${esc(g.move)}</h3>${list(g.must)}</div>`).join('')}</div><div class="card red"><h3>Hard Rule</h3><p>${esc(d.rule)}</p></div>${bmBox(d.bm_box)}`;
+
+        case 'weekly_system':
+          return `${title}<div class="tablewrap"><table><thead><tr><th>Day</th><th>Media Buyer</th><th>Creative Team</th><th>Leader</th></tr></thead><tbody>${(d.days||[]).map(day=>`<tr><td><strong>${esc(day.name)}</strong></td><td>${esc(day.mb)}</td><td>${esc(day.ct)}</td><td>${esc(day.lead)}</td></tr>`).join('')}</tbody></table></div><div class="card cyan"><h3>Weekly Outputs</h3>${list(d.targets)}</div>${bmBox(d.bm_box)}`;
+
+        case 'flowchart_final':
+          return `${title}<div class="phase-list">${(d.steps||[]).map((s,i)=>`<div class="phase"><div class="budget">Step ${i+1}</div><div class="card"><h3>${esc(s)}</h3></div></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+
+        case 'closing_slide':
+          return `<div class="slide-kicker">Final Andromeda Rule</div><h1>“${esc(d.quote)}”</h1>${bmBox(d.bm_quote)}<div class="grid3">${(d.points||[]).map(p=>`<div class="card"><h3>${esc(p.en)}</h3><p>${esc(p.bm)}</p></div>`).join('')}</div><p>${esc(d.final_msg)}</p>`;
+
+        default:
+          if ((slide.type || '').startsWith('conditional_logic')) {
+            return `${title}<div class="grid2">${(d.rules||[]).map(r=>`<div class="card"><div class="slide-kicker">Symptom</div><h3>${esc(r.cond || r.problem || r.prob)}</h3><p class="small">${esc(r.bm_cond || r.bm_prob || '')}</p>${r.diag || r.cause ? `<div class="slide-kicker">Likely Cause</div><p>${esc(r.diag || r.cause)}</p><p class="small">${esc(r.bm_diag || r.bm_cause || '')}</p>` : ''}<div class="slide-kicker">SOP Action</div><p>${esc(r.act || r.action)}</p><p class="small">${esc(r.bm_act || '')}</p></div>`).join('')}</div>${bmBox(d.bm_box)}`;
+          }
+          return `${title}<pre class="fallback">${JSON.stringify(d,null,2)}</pre>`;
       }
-
-      else if (slide.type === 'concept') {
-        body = `
-          <span class="eyebrow">Strategic Shift</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-2">
-            <div class="card"><h3>${esc(d.left_title)}</h3>${listItems(d.left_items || [], x => x.en, x => x.bm)}</div>
-            <div class="card"><h3 style="color:var(--red)">${esc(d.right_title)}</h3>${listItems(d.right_items || [], x => x.en, x => x.bm)}</div>
-          </div>
-          <p class="subtitle"><strong>Key:</strong> ${esc(d.key_message || '')}</p>
-          ${bmBox(d.bm_key)}
-        `;
-      }
-
-      else if (slide.type === 'pyramid') {
-        body = `
-          <span class="eyebrow">Scaling Pyramid</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="card">${listItems([...(d.layers || [])].sort((a,b)=>b.lvl-a.lvl), x => `Level ${x.lvl} — ${x.label}`, x => x.bm)}</div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'timeline') {
-        body = `
-          <span class="eyebrow">Roadmap</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="timeline">
-            ${(d.steps || []).map(s => `<div class="phase"><b>${esc(s.phase)} • ${esc(s.period)}</b><strong>${esc(s.budget)}</strong><br><span class="muted">${esc(s.vol)}</span><p>${esc(s.bm)}</p></div>`).join('')}
-          </div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'matrix') {
-        body = `
-          <span class="eyebrow">Creative Matrix</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <table>
-            <thead><tr><th>Category</th><th>BM Meaning</th><th>Purpose</th><th>Creative 1</th><th>Creative 2</th><th>Creative 3</th></tr></thead>
-            <tbody>${(d.rows || []).map(r => `<tr><td><b>${esc(r.cat)}</b></td><td>${esc(r.bm_mean)}</td><td>${esc(r.purpose)}</td><td>${esc(r.var1)}</td><td>${esc(r.var2)}</td><td>${esc(r.var3)}</td></tr>`).join('')}</tbody>
-          </table>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'checklist') {
-        body = `
-          <span class="eyebrow">Checklist</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-2">
-            <div class="card"><h3 style="color:var(--green)">Wajib Buat</h3>${listItems(d.dos || [], x => x.en, x => x.bm)}</div>
-            <div class="card"><h3 style="color:var(--red)">Jangan Buat</h3>${listItems(d.donts || [], x => x.en, x => x.bm)}</div>
-          </div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'kpi_review') {
-        body = `
-          <span class="eyebrow">Metrics Review</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <table>
-            <thead><tr><th>Metric</th><th>BM</th><th>Healthy</th><th>Weak</th><th>Action</th></tr></thead>
-            <tbody>${(d.metrics || []).map(m => `<tr><td><b>${esc(m.name)}</b></td><td>${esc(m.bm)}</td><td style="color:var(--green)">${esc(m.healthy)}</td><td style="color:var(--red)">${esc(m.weak)}</td><td>${esc(m.action)}</td></tr>`).join('')}</tbody>
-          </table>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type.includes('conditional_logic')) {
-        body = `
-          <span class="eyebrow">Conditional Logic</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <table>
-            <thead><tr><th>Symptom</th><th>Cause / Diagnosis</th><th>SOP Action</th></tr></thead>
-            <tbody>${(d.rules || []).map(r => {
-              const symptom = r.cond || r.problem || r.prob || '';
-              const symptomBm = r.bm_cond || r.bm_prob || '';
-              const cause = r.diag || r.cause || '';
-              const causeBm = r.bm_diag || r.bm_cause || '';
-              const action = r.act || '';
-              return `<tr><td><b>${esc(symptom)}</b><br><span class="muted">${esc(symptomBm)}</span></td><td>${esc(cause)}<br><span class="muted">${esc(causeBm)}</span></td><td>${esc(action)}</td></tr>`;
-            }).join('')}</tbody>
-          </table>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'budget_ladder') {
-        body = `
-          <span class="eyebrow">Budget Ladder</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-2">
-            <div class="card"><h3>Budget Steps</h3>${listItems(d.steps || [], x => `${x.from} → ${x.to}`, x => x.cond)}</div>
-            <div class="card"><h3>Checklist</h3>${listItems(d.checklist || [], x => x)}</div>
-          </div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'hub_spoke') {
-        body = `
-          <span class="eyebrow">Creative Expansion</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="card"><h3>${esc(d.source)}</h3>${listItems(d.spokes || [], x => x.name, x => x.desc)}</div>
-          <p class="subtitle">${esc(d.goal || '')}</p>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type.includes('campaign_split')) {
-        body = `
-          <span class="eyebrow">Campaign Split</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-2">${(d.split || []).map(s => `<div class="card"><h3>${esc(s.name)} — ${esc(s.budget)} (${esc(s.pct)})</h3><p>${esc(s.obj || s.desc || '')}</p><p class="muted">${esc(s.bm_desc || '')}</p></div>`).join('')}</div>
-          ${d.inventory ? `<div class="card"><h3>Creative Inventory</h3>${listItems(Object.values(d.inventory), x => x)}</div>` : ''}
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'global_matrix') {
-        body = `
-          <span class="eyebrow">Troubleshooting</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <table>
-            <thead><tr><th>Symptom</th><th>Diagnosis</th><th>Action 1</th><th>Action 2</th></tr></thead>
-            <tbody>${(d.matrix || []).map(m => `<tr><td><b>${esc(m.sym)}</b><br><span class="muted">${esc(m.bm_sym)}</span></td><td>${esc(m.diag)}<br><span class="muted">${esc(m.bm_diag)}</span></td><td>${esc(m.act1)}</td><td>${esc(m.act2)}</td></tr>`).join('')}</tbody>
-          </table>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'rules_cards') {
-        body = `
-          <span class="eyebrow">IF-THEN Rules</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-3">${(d.rules || []).map(r => `<div class="card"><h3>IF</h3><p>${esc(r.cond)}</p><h3 style="color:var(--green)">THEN</h3><p>${esc(r.act)}</p></div>`).join('')}</div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'phase_gate') {
-        body = `
-          <span class="eyebrow">Phase Gate</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="grid-3">${(d.gates || []).map(g => `<div class="card"><h3>${esc(g.move)}</h3>${listItems(g.must || [], x => x)}</div>`).join('')}</div>
-          <p class="subtitle">${esc(d.rule || '')}</p>
-        `;
-      }
-
-      else if (slide.type === 'weekly_system') {
-        body = `
-          <span class="eyebrow">Weekly OS</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <table>
-            <thead><tr><th>Day</th><th>Media Buyer</th><th>Creative Team</th><th>Leader</th></tr></thead>
-            <tbody>${(d.days || []).map(day => `<tr><td><b>${esc(day.name)}</b></td><td>${esc(day.mb)}</td><td>${esc(day.ct)}</td><td>${esc(day.lead)}</td></tr>`).join('')}</tbody>
-          </table>
-          <div class="card"><h3>Weekly Targets</h3>${listItems(d.targets || [], x => x)}</div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'flowchart_final') {
-        body = `
-          <span class="eyebrow">Final Flow</span>
-          <h2 class="slide-heading">${esc(slide.title)}</h2>
-          <div class="card">${listItems((d.steps || []).map((x,i)=>`${i+1}. ${x}`), x => x)}</div>
-          ${bmBox(d.bm_box)}
-        `;
-      }
-
-      else if (slide.type === 'closing_slide') {
-        body = `
-          <span class="eyebrow">Final Rule</span>
-          <h2 class="slide-heading">"${esc(d.quote)}"</h2>
-          <p class="subtitle">"${esc(d.bm_quote)}"</p>
-          <div class="grid-3">${(d.points || []).map(p => `<div class="card"><h3>${esc(p.en)}</h3><p class="muted">${esc(p.bm)}</p></div>`).join('')}</div>
-          <p class="subtitle">${esc(d.final_msg || '')}</p>
-        `;
-      }
-
-      else {
-        body = `<h2 class="slide-heading">${esc(slide.title)}</h2><pre>${esc(JSON.stringify(d, null, 2))}</pre>`;
-      }
-
-      return body;
     }
 
-    function renderSlide() {
-      const slide = slideMetadata[currentSlide - 1];
-      slideContent.innerHTML = renderGeneric(slide);
-
-      slideProgressBadge.textContent = `${currentSlide} / ${totalSlides}`;
-      slideNumIndicator.textContent = `${String(currentSlide).padStart(2, '0')} // ${String(totalSlides).padStart(2, '0')}`;
-      slideProgressBar.style.width = `${(currentSlide / totalSlides) * 100}%`;
-
-      [...document.querySelectorAll('.slide-btn')].forEach((btn, idx) => {
-        btn.classList.toggle('active', idx + 1 === currentSlide);
-      });
+    function renderSidebar() {
+      el('slideList').innerHTML = slideMetadata.map(s => `<button class="slide-btn ${s.idx === currentSlide ? 'active' : ''}" onclick="go(${s.idx})"><span class="num">${String(s.idx).padStart(2,'0')}</span><span>${esc(s.title)}</span></button>`).join('');
     }
 
-    function populateSidebar() {
-      sidebarList.innerHTML = slideMetadata.map((s, idx) => `
-        <button class="slide-btn ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx + 1})">
-          <span class="slide-num">${String(idx + 1).padStart(2, '0')}</span>
-          <span class="slide-title-mini">${esc(s.title)}</span>
-        </button>
-      `).join('');
+    function render() {
+      const slide = slideMetadata.find(s => s.idx === currentSlide) || slideMetadata[0];
+      el('slideStage').innerHTML = renderSlide(slide);
+      el('progressBadge').textContent = `${currentSlide} / ${totalSlides}`;
+      el('slideCounter').textContent = `${String(currentSlide).padStart(2,'0')} // ${totalSlides}`;
+      el('progressBar').style.width = `${(currentSlide/totalSlides)*100}%`;
+      renderSidebar();
     }
 
-    function goToSlide(n) {
-      currentSlide = Math.max(1, Math.min(totalSlides, n));
-      renderSlide();
-    }
-
-    function nextSlide() {
-      goToSlide(currentSlide === totalSlides ? 1 : currentSlide + 1);
-    }
-
-    function prevSlide() {
-      goToSlide(currentSlide === 1 ? totalSlides : currentSlide - 1);
-    }
-
-    document.getElementById('next-btn').addEventListener('click', nextSlide);
-    document.getElementById('prev-btn').addEventListener('click', prevSlide);
-
-    document.getElementById('fullscreen-btn').addEventListener('click', () => {
-      const frame = document.querySelector('.frame');
-      if (!document.fullscreenElement) frame.requestFullscreen?.();
-      else document.exitFullscreen?.();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
-    });
-
-    populateSidebar();
-    renderSlide();
+    function go(n) { currentSlide = Math.max(1, Math.min(totalSlides, n)); render(); }
+    el('prevBtn').onclick = () => go(currentSlide - 1);
+    el('nextBtn').onclick = () => go(currentSlide + 1);
+    document.addEventListener('keydown', (e) => { if(e.key === 'ArrowRight') go(currentSlide+1); if(e.key === 'ArrowLeft') go(currentSlide-1); });
+    render();
   </script>
 </body>
 </html>
