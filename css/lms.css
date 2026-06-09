@@ -1,1 +1,75 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
 
+.lms-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.lms-sidebar {
+  background: #0f172a;
+  color: white;
+  padding: 24px;
+}
+
+.lms-sidebar a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.lms-sidebar a.active,
+.lms-sidebar a:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.lms-main {
+  padding: 32px;
+}
+
+.lms-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.lesson-card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.progress-bar {
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  height: 10px;
+  margin: 16px 0;
+}
+
+.progress-fill {
+  background: #2563eb;
+  width: 0%;
+  height: 100%;
+}
+
+.complete-btn {
+  background: #16a34a;
+  color: white;
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
