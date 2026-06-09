@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Tailwind CSS for utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- PptxGenJS Core Engine for Client-side Presentation Generation -->
-    <script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
     
     <script>
         tailwind.config = {
@@ -53,12 +51,8 @@
         }
 
         /* Slide Transition Animations */
-        .slide-container {
-            perspective: 1200px;
-        }
         .slide-card {
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            transform-style: preserve-3d;
         }
         .slide-hidden {
             opacity: 0;
@@ -76,14 +70,13 @@
         }
 
         /* Glassmorphism elements */
-        .glass-card {
-            background: rgba(15, 22, 38, 0.75);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+       .glass-card {
+              background: rgba(15, 22, 38, 0.95);
+              border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .glass-card-hover:hover {
-            border-color: rgba(225, 29, 72, 0.35);
-            box-shadow: 0 10px 25px -10px rgba(225, 29, 72, 0.12);
+
+        .slide-card {
+              transition: opacity 0.2s ease;
         }
 
         /* Glowing accents */
@@ -135,10 +128,6 @@
 
         <!-- Dynamic PPTX Exporter & Meta Indicator -->
         <div class="flex items-center gap-3">
-            <button onclick="generatePPTX()" class="bg-eskobaRed hover:bg-rose-700 text-white text-[11px] md:text-xs font-bold font-space px-4 py-2 rounded-lg flex items-center gap-2 transition-all shadow-lg shadow-eskobaRed/20 hover:scale-[1.03] active:scale-95">
-                <i class="fa-solid fa-file-powerpoint text-sm"></i>
-                <span>EXPORT .PPTX FILE</span>
-            </button>
             <div class="hidden sm:flex items-center gap-1.5 px-3 py-1 bg-[#131926] border border-slate-800 rounded-full">
                 <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                 <span class="text-[10px] font-mono text-slate-400 font-semibold">Andromeda v3.0 Blueprint</span>
@@ -1498,11 +1487,6 @@
                 fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand text-sm"></i>';
             }
         }
-
-        // PowerPoint Exporter for 23 Custom Slides matching brand criteria
-        function generatePPTX() {
-            let pptx = new PptxGenJS();
-            pptx.layout = 'LAYOUT_16x9';
 
             // Custom Brand Colors Definition (RGB matching Eskoba Corporate palette)
             const COLOR_DEEP_NAVY = '060A13';
