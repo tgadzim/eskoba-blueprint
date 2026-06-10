@@ -13,9 +13,8 @@ import {
 const lessons = ["lesson-1", "lesson-2"];
 
 onAuthStateChanged(auth, async (user) => {
-
   if (!user) {
-    window.location.href = "index.html";
+    window.location.href = "login.html";
     return;
   }
 
@@ -23,56 +22,37 @@ onAuthStateChanged(auth, async (user) => {
   const userSnap = await getDoc(userRef);
 
   if (userSnap.exists()) {
-
     const data = userSnap.data();
 
     document.getElementById("welcomeText").innerHTML = `
-      <h2>${data.name}</h2>
+      <p>${data.name}</p>
       <p>${data.role} • ${data.company}</p>
     `;
+  } else {
+    document.getElementById("welcomeText").innerText =
+      `Welcome back, ${user.email}`;
   }
 
   let completed = 0;
 
   for (const lessonId of lessons) {
-
-    const lessonRef = doc(
-      db,
-      "progress",
-      user.uid,
-      "lessons",
-      lessonId
-    );
-
+    const lessonRef = doc(db, "progress", user.uid, "lessons", lessonId);
     const lessonSnap = await getDoc(lessonRef);
 
-    if (
-      lessonSnap.exists() &&
-      lessonSnap.data().completed === true
-    ) {
+    if (lessonSnap.exists() && lessonSnap.data().completed === true) {
       completed++;
     }
   }
 
-  const percent =
-    Math.round((completed / lessons.length) * 100);
+  const percent = Math.round((completed / lessons.length) * 100);
 
-  document.getElementById(
-    "overallProgressText"
-  ).innerText =
-    `${completed} / ${lessons.length} lessons completed`;
+  document.getElementById("overallProgressText").innerText =
+    `${completed} / ${lessons.length} lessons completed (${percent}%)`;
 
-  document.getElementById(
-    "overallProgressBar"
-  ).style.width =
-    `${percent}%`;
+  document.getElementById("overallProgressBar").style.width = `${percent}%`;
 });
 
-document
-  .getElementById("logoutBtn")
-  .addEventListener("click", async () => {
-
-    await signOut(auth);
-
-    window.location.href = "index.html";
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.href = "login.html";
 });
