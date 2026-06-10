@@ -12,7 +12,6 @@ import {
 const lessons = ["lesson-1", "lesson-2"];
 
 onAuthStateChanged(auth, async (user) => {
-
   if (!user) return;
 
   document.getElementById("welcomeText").innerText =
@@ -21,28 +20,15 @@ onAuthStateChanged(auth, async (user) => {
   let completed = 0;
 
   for (const lessonId of lessons) {
-
-    const ref = doc(
-      db,
-      "progress",
-      user.uid,
-      "lessons",
-      lessonId
-    );
-
+    const ref = doc(db, "progress", user.uid, "lessons", lessonId);
     const snap = await getDoc(ref);
 
-    if (
-      snap.exists() &&
-      snap.data().completed === true
-    ) {
+    if (snap.exists() && snap.data().completed === true) {
       completed++;
     }
   }
 
-  const percent = Math.round(
-    (completed / lessons.length) * 100
-  );
+  const percent = Math.round((completed / lessons.length) * 100);
 
   document.getElementById("overallProgressText").innerText =
     `${completed} / ${lessons.length} lessons completed (${percent}%)`;
