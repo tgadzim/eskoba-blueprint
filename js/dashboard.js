@@ -1,4 +1,3 @@
-```javascript
 import { auth, db } from "../firebase/config.js";
 
 import {
@@ -51,5 +50,3 @@ onAuthStateChanged(auth, async (user) => {
   document.getElementById("overallProgressBar").style.width =
     `${percent}%`;
 });
-```
-
