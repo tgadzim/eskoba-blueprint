@@ -17,7 +17,7 @@ window.loginUser = async function() {
       password
     );
 
-    window.location.href = "home.html";
+    window.location.href = "dashboard.html";
 
   } catch(error) {
 
