@@ -1,7 +1,8 @@
 import { auth, db } from "../firebase/config.js";
 
 import {
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
 import {
@@ -12,27 +13,66 @@ import {
 const lessons = ["lesson-1", "lesson-2"];
 
 onAuthStateChanged(auth, async (user) => {
-  if (!user) return;
 
-  document.getElementById("welcomeText").innerText =
-    `Welcome back, ${user.email}`;
+  if (!user) {
+    window.location.href = "index.html";
+    return;
+  }
+
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+
+  if (userSnap.exists()) {
+
+    const data = userSnap.data();
+
+    document.getElementById("welcomeText").innerHTML = `
+      <h2>${data.name}</h2>
+      <p>${data.role} • ${data.company}</p>
+    `;
+  }
 
   let completed = 0;
 
   for (const lessonId of lessons) {
-    const ref = doc(db, "progress", user.uid, "lessons", lessonId);
-    const snap = await getDoc(ref);
 
-    if (snap.exists() && snap.data().completed === true) {
+    const lessonRef = doc(
+      db,
+      "progress",
+      user.uid,
+      "lessons",
+      lessonId
+    );
+
+    const lessonSnap = await getDoc(lessonRef);
+
+    if (
+      lessonSnap.exists() &&
+      lessonSnap.data().completed === true
+    ) {
       completed++;
     }
   }
 
-  const percent = Math.round((completed / lessons.length) * 100);
+  const percent =
+    Math.round((completed / lessons.length) * 100);
 
-  document.getElementById("overallProgressText").innerText =
-    `${completed} / ${lessons.length} lessons completed (${percent}%)`;
+  document.getElementById(
+    "overallProgressText"
+  ).innerText =
+    `${completed} / ${lessons.length} lessons completed`;
 
-  document.getElementById("overallProgressBar").style.width =
+  document.getElementById(
+    "overallProgressBar"
+  ).style.width =
     `${percent}%`;
+});
+
+document
+  .getElementById("logoutBtn")
+  .addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    window.location.href = "index.html";
 });
